@@ -1,0 +1,328 @@
+/* ============================================================
+   Design tokens — Hemasri Kalaiselvan portfolio
+   Palette: deep navy primary, restrained teal + blue accents.
+   Two themes: light (default) and dark. Preference persisted.
+   ============================================================ */
+
+:root,
+:root[data-theme='light'] {
+  /* Brand */
+  --navy-900: #0b1f33;
+  --navy-800: #102b45;
+  --navy-700: #1a3a5c;
+  --navy-600: #274b6d;
+
+  --teal-600: #0e7c86;
+  --teal-500: #158b95;
+  --teal-100: #d7eef0;
+
+  --blue-600: #1f5f9e;
+  --blue-500: #2a72b8;
+  --blue-100: #dceaf6;
+
+  /* Surfaces (light) */
+  --page-bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --surface-sunken: #eceff3;
+
+  /* Text (light) */
+  --text-primary: #0b1f33;
+  --text-secondary: #46586b;
+  --text-muted: #7a8899;
+
+  /* Lines */
+  --border: #e0e5ec;
+  --border-strong: #c8d0da;
+
+  /* Accents mapped to roles */
+  --accent: var(--teal-600);
+  --accent-strong: var(--navy-800);
+  --accent-soft-bg: var(--teal-100);
+  --link: var(--blue-600);
+
+  --shadow-sm: 0 1px 2px rgba(11, 31, 51, 0.06);
+  --shadow-md: 0 6px 22px rgba(11, 31, 51, 0.08);
+
+  --radius: 10px;
+  --radius-lg: 16px;
+
+  --maxw: 1080px;
+  --gutter: clamp(20px, 5vw, 48px);
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, 'Cascadia Code', monospace;
+}
+
+:root[data-theme='dark'] {
+  /* Surfaces (dark — deep navy neutrals, never pure black) */
+  --page-bg: #0a1622;
+  --surface: #10202f;
+  --surface-2: #142838;
+  --surface-sunken: #0d1c29;
+
+  /* Text (dark) */
+  --text-primary: #eaf1f8;
+  --text-secondary: #a8bccf;
+  --text-muted: #7089a0;
+
+  /* Lines */
+  --border: #21384c;
+  --border-strong: #2f4c63;
+
+  /* Accents (slightly brighter for contrast on dark) */
+  --teal-100: #123a3e;
+  --blue-100: #12314b;
+  --accent: #3fb2bd;
+  --accent-strong: #cfe0f0;
+  --accent-soft-bg: #123338;
+  --link: #6bb0e6;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 26px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(56px, 9vw, 104px);
+  scroll-margin-top: 76px;
+}
+
+.section--alt {
+  background: var(--surface-2);
+}
+
+/* Monospace eyebrow — the documentation-style signature label */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  margin: 0 0 16px;
+  max-width: 18ch;
+}
+
+.section-intro {
+  color: var(--text-secondary);
+  max-width: 60ch;
+  font-size: 1.05rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease, color 0.2s ease;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn:hover {
+  text-decoration: none;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn--primary {
+  background: var(--navy-800);
+  color: #fff;
+}
+:root[data-theme='dark'] .btn--primary {
+  background: var(--accent);
+  color: #06131d;
+}
+.btn--primary:hover {
+  background: var(--navy-700);
+}
+:root[data-theme='dark'] .btn--primary:hover {
+  background: #52c2cc;
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Chips / tags */
+.chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.placeholder-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.placeholder-note::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px dashed var(--text-muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

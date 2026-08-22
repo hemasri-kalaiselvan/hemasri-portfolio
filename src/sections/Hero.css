@@ -1,0 +1,155 @@
+.hero {
+  position: relative;
+  padding-block: clamp(56px, 10vw, 120px);
+  overflow: hidden;
+}
+/* Subtle diagonal hairline texture — the enterprise "blueprint" signature */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      to right,
+      var(--border) 1px,
+      transparent 1px
+    );
+  background-size: 72px 100%;
+  opacity: 0.35;
+  mask-image: radial-gradient(ellipse 80% 60% at 80% 20%, #000 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 80% 20%, #000 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 6vw, 64px);
+  align-items: center;
+}
+
+.hero__name {
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  line-height: 1.02;
+  margin: 6px 0 18px;
+}
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.4vw, 1.7rem);
+  font-weight: 500;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.hero__tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  margin: 0 0 26px;
+}
+
+.hero__intro {
+  color: var(--text-secondary);
+  max-width: 56ch;
+  font-size: 1.06rem;
+  margin: 0 0 34px;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Monogram / journey aside */
+.hero__aside {
+  display: flex;
+  justify-content: center;
+}
+.hero__photo {
+  width: 100%;
+  max-width: 380px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+}
+
+.hero__monogram {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1.08;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  position: relative;
+}
+.hero__monogram::after {
+  content: 'HK';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 16rem;
+  color: var(--text-primary);
+  opacity: 0.03;
+  pointer-events: none;
+}
+.hero__monogram-mark {
+  font-family: var(--font-display);
+  font-size: 4.4rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  z-index: 1;
+}
+.hero__monogram-journey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+.hero__monogram-journey span {
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 18px;
+}
+.hero__monogram-journey span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero__monogram-journey span:nth-child(3) {
+  color: var(--accent);
+}
+
+@media (min-width: 860px) {
+  .hero__inner {
+    grid-template-columns: 1.25fr 0.9fr;
+    align-items: center;
+  }
+}

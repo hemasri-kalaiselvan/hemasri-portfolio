@@ -1,0 +1,94 @@
+.pcard {
+  padding: 26px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pcard:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.pcard__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.pcard__name {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.pcard__status {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft-bg);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.pcard__summary {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0 0 20px;
+}
+
+.pcard__features {
+  margin-bottom: 18px;
+}
+.pcard__features-label,
+.pcard__tech-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.pcard__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pcard__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.chip--tech {
+  background: var(--accent-soft-bg);
+  border-color: transparent;
+  color: var(--accent);
+}
+.pcard__tech-note {
+  margin-bottom: 20px;
+}
+
+.pcard__footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.pcard__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+.pcard__link:hover {
+  text-decoration: none;
+  color: var(--accent);
+  gap: 12px;
+}
