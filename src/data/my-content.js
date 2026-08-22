@@ -318,8 +318,8 @@ export const resume = {
 
 export const contact = {
   email: null,      // e.g. 'name@example.com'
-  linkedin: null,   // e.g. 'https://www.linkedin.com/in/your-handle'
-  github: null,     // e.g. 'https://github.com/your-handle'
+  linkedin: 'https://www.linkedin.com/in/hemasri-kalaiselvan/',   // e.g. 'https://www.linkedin.com/in/your-handle'
+  github: 'https://github.com/hemasri-kalaiselvan',     // e.g. 'https://github.com/your-handle'
 
   // Any other professional links. Example:
   // other: [ { label: 'Medium', url: 'https://medium.com/@you' } ],
