@@ -118,7 +118,7 @@ export default function Experience() {
     <Section
       id="experience"
       eyebrow="Professional experience"
-      title="A foundation built over 15+ years"
+      title="Enterprise technology experience"
       intro="An established career in enterprise technology, expanding as the industry evolves. Each entry can grow into a fuller record over time."
     >
       <ol className="exp__timeline">
