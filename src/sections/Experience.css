@@ -149,6 +149,17 @@
   color: var(--accent);
   margin: 0 0 8px;
 }
+.exp__detail-groups {
+  display: grid;
+  gap: 16px;
+}
+.exp__detail-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
 .exp__detail-list {
   display: grid;
   gap: 6px;

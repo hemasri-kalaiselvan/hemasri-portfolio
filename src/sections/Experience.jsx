@@ -5,14 +5,39 @@ import './Experience.css'
 
 function DetailBlock({ label, items }) {
   if (!items || items.length === 0) return null
+
+  // Supports two shapes:
+  // 1) a flat list of strings: ['A', 'B']
+  // 2) grouped sub-sections:   [{ title: 'X', items: ['A','B'] }, ...]
+  const isGrouped =
+    typeof items[0] === 'object' && items[0] !== null && 'items' in items[0]
+
   return (
     <div className="exp__detail">
       <h4 className="exp__detail-title">{label}</h4>
-      <ul className="exp__detail-list">
-        {items.map((it, i) => (
-          <li key={i}>{it}</li>
-        ))}
-      </ul>
+
+      {isGrouped ? (
+        <div className="exp__detail-groups">
+          {items.map((group, gi) => (
+            <div key={gi} className="exp__detail-group">
+              {group.title && (
+                <h5 className="exp__detail-subtitle">{group.title}</h5>
+              )}
+              <ul className="exp__detail-list">
+                {group.items?.map((it, i) => (
+                  <li key={i}>{typeof it === 'string' ? it.trim() : it}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <ul className="exp__detail-list">
+          {items.map((it, i) => (
+            <li key={i}>{typeof it === 'string' ? it.trim() : it}</li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }
@@ -41,7 +66,11 @@ function ExperienceEntry({ entry, defaultOpen }) {
           <div className="exp__head-main">
             <h3 className="exp__company">{entry.company}</h3>
             <p className="exp__role">
-              {entry.role || <span className="placeholder-note">Role to be added</span>}
+              {Array.isArray(entry.role)
+                ? entry.role.join(' · ')
+                : entry.role || (
+                    <span className="placeholder-note">Role to be added</span>
+                  )}
             </p>
           </div>
           <div className="exp__head-meta">
