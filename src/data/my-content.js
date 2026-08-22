@@ -39,7 +39,7 @@ export const identity = {
 
   // The short introduction paragraph on the home screen.
   intro:
-    'More than 15 years in enterprise technology, with a foundation in Mainframe and Big Data. Today that same journey continues into Artificial Intelligence, emerging technologies, and hands-on projects — one path of experience, evolution, and continuous building.',
+    'More than 15 years of substantial experience in enterprise technology, spanning Mainframe and Big Data. Today that same journey continues into Artificial Intelligence, emerging technologies, and hands-on projects — one path of experience, evolution, and continuous building.',
 
   // Path to a profile photo, if you have one.
   // Leave as null to show a clean monogram instead of a photo.
@@ -56,14 +56,14 @@ export const identity = {
 export const about = {
   paragraphs: [
     'My career spans more than fifteen years in enterprise technology, built on the discipline that large-scale Mainframe and Big Data systems demand. Working close to the systems that businesses depend on has shaped how I think about reliability, data, and solving real problems well.',
-    'That foundation is not a chapter I have closed — it is the ground I build on. As technology has evolved, so has my work, moving from established enterprise platforms toward data at scale and, increasingly, toward Artificial Intelligence and emerging tools.',
+    'That experience is not a chapter I have closed — it is what I continue to build on. As technology has evolved, so has my work, moving from established enterprise platforms toward data at scale and, increasingly, toward Artificial Intelligence and emerging tools.',
     'I explore new technology the way I have always worked: practically. I learn by building, experimenting, and documenting what actually works. This portfolio brings that whole journey together — the experience behind me, the exploration in front of me, and the projects that connect the two.',
   ],
 
   // The four short pillars shown beside your story. Edit the text only.
   pillars: [
     { label: 'Experience', text: '15+ years across enterprise technology' },
-    { label: 'Evolution', text: 'Mainframe and Big Data foundations' },
+    { label: 'Evolution', text: 'Mainframe and Big Data expertise' },
     { label: 'Exploration', text: 'AI and emerging technologies' },
     { label: 'Building', text: 'Practical projects and solutions' },
   ],
