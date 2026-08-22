@@ -45,7 +45,7 @@ export const identity = {
   // Leave as null to show a clean monogram instead of a photo.
   // To use a photo: put the image file in the "public" folder and write
   // its name here, e.g. photo: '/my-photo.jpg',
-  photo: '/my-photo.png',
+  photo: null,
 }
 
 
@@ -87,52 +87,23 @@ export const experience = [
   {
     id: 'tcs',
     company: 'TCS',            // company name — change to mask if needed
-    role: ['Developer', 'Production Support'],                // e.g. 'Senior Systems Engineer' — or keep null
+    role: null,                // e.g. 'Senior Systems Engineer' — or keep null
     duration: 'More than 15 years',
-    period: '2009 — Jun 2026',              // e.g. '2009 — Present' — or keep null
+    period: null,              // e.g. '2009 — Present' — or keep null
     technologyAreas: ['Mainframe', 'Big Data'],
     responsibilities: [
       // 'Add a real responsibility here',
-	  {
-		  title: 'Development',
-          items: [
-					'Component development and enhancements',
-					'Defects fixes                         ',
-					'Unit testing                          ',
-					'UAT deployment                        ',
-					'UAT batch execution                   ',
-					'Production deployment                 ',
-					'Post-deployment monitoring            '
-					]
-	  },
-	  {
-		  title: 'Production Support',
-		  items: [
-					'Ticket handling                      ',
-					'Issue analysis and resolution        ',
-					'Batch monitoring                     ',
-					'Bug fixes                            ',
-					'Component enhancements and deployment'
-					]
-	  }
     ],
     contributions: [
       // 'Add a real contribution here',
-	  'Component creation',
-	  'Application enhancement',
-	  'Task Automation',
-	  'Root cause analysis'
     ],
     projects: [
       // 'Add a real project name here',
-	  'Banking', 'Retail'
     ],
     achievements: [
       // 'Add a real achievement here',
-	  'Automated some recurring production support tasks — Recognized with an Appreciation Award'
-
     ],
-    current: false,             // true shows a "Current" badge
+    current: true,             // true shows a "Current" badge
   },
 
   // To add another job, copy the block above and paste it here.
@@ -154,7 +125,7 @@ export const skills = [
     description: 'Mainframe and large-scale enterprise systems.',
     icon: 'server',
     items: [
-       'COBOL', 'JCL', 'DB2', 'VSAM',
+      // 'COBOL', 'JCL', 'DB2', 'CICS',
     ],
   },
   {
@@ -163,7 +134,7 @@ export const skills = [
     description: 'Big Data platforms and data processing.',
     icon: 'database',
     items: [
-       'Hadoop', 'PySpark', 'Hive', 'Oozie', 'HBASE', 'Shell Scripts'
+      // 'Hadoop', 'Spark', 'Hive',
     ],
   },
   {
@@ -173,7 +144,6 @@ export const skills = [
     icon: 'sparkles',
     items: [
       // add AI tools as you genuinely explore them
-	  'ChatGPT','Claude','Wispr Flow','Replit','Lovable'
     ],
   },
   {
@@ -183,7 +153,6 @@ export const skills = [
     icon: 'code',
     items: [
       // add web/app technologies you actually use
-	  'HTML', 'CSS', 'Javascript', 'React', 'Git', 'GitHub'
     ],
   },
 ]
