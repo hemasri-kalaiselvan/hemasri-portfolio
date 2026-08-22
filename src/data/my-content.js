@@ -39,7 +39,7 @@ export const identity = {
 
   // The short introduction paragraph on the home screen.
   intro:
-    'Deep experience in enterprise technology, spanning Mainframe and Big Data. Today that same journey continues into Artificial Intelligence, emerging technologies, and hands-on projects — one path of experience, evolution, and continuous building.',
+    'More than 15 years in enterprise technology, with a foundation in Mainframe and Big Data. Today that same journey continues into Artificial Intelligence, emerging technologies, and hands-on projects — one path of experience, evolution, and continuous building.',
 
   // Path to a profile photo, if you have one.
   // Leave as null to show a clean monogram instead of a photo.
@@ -55,15 +55,15 @@ export const identity = {
 
 export const about = {
   paragraphs: [
-    'My career in enterprise technology has been built on the discipline that large-scale Mainframe and Big Data systems demand. Working close to the systems that businesses depend on has shaped how I think about reliability, data, and solving real problems well.',
-    'That experience is not a chapter I have closed — it is what I continue to build on. As technology has evolved, so has my work, moving from established enterprise platforms toward data at scale and, increasingly, toward Artificial Intelligence and emerging tools.',
+    'My career spans more than fifteen years in enterprise technology, built on the discipline that large-scale Mainframe and Big Data systems demand. Working close to the systems that businesses depend on has shaped how I think about reliability, data, and solving real problems well.',
+    'That foundation is not a chapter I have closed — it is the ground I build on. As technology has evolved, so has my work, moving from established enterprise platforms toward data at scale and, increasingly, toward Artificial Intelligence and emerging tools.',
     'I explore new technology the way I have always worked: practically. I learn by building, experimenting, and documenting what actually works. This portfolio brings that whole journey together — the experience behind me, the exploration in front of me, and the projects that connect the two.',
   ],
 
   // The four short pillars shown beside your story. Edit the text only.
   pillars: [
     { label: 'Experience', text: '15+ years across enterprise technology' },
-    { label: 'Evolution', text: 'Mainframe and Big Data expertise' },
+    { label: 'Evolution', text: 'Mainframe and Big Data foundations' },
     { label: 'Exploration', text: 'AI and emerging technologies' },
     { label: 'Building', text: 'Practical projects and solutions' },
   ],
@@ -88,7 +88,7 @@ export const experience = [
     id: 'tcs',
     company: 'TCS',            // company name — change to mask if needed
     role: ['Developer', 'Production Support'],                // e.g. 'Senior Systems Engineer' — or keep null
-    duration: '15+ years',
+    duration: 'More than 15 years',
     period: '2009 — Jun 2026',              // e.g. '2009 — Present' — or keep null
     technologyAreas: ['Mainframe', 'Big Data'],
     responsibilities: [
@@ -270,14 +270,51 @@ export const aiExplorations = [
  * ------------------------------------------------------------------------- */
 
 export const certifications = [
-  // {
-  //   id: 'cert-1',
-  //   name: 'Certification name',
-  //   provider: 'Provider name',
-  //   date: 'Month Year',
-  //   subject: 'Related subject',
-  //   verifyUrl: null,   // link to verify the credential, or null
-  // },
+  {
+    id: 'ai-tools-workshop',
+    name: 'AI Tools Workshop',
+    issuer: 'be10x',
+    date: 'August 9, 2026',
+    covers: [
+      'Create presentations using AI in 5 minutes',
+      'Analyse data using AI in 30 minutes',
+      'Code and debug using AI in 10 minutes',
+    ],
+    image: '/cert-ai-tools.png',
+    verifyUrl: 'https://certx.in/certificate/0270772f-3809-4400-b29b-1e1c61cd09971632835',
+  },
+  {
+    id: 'ai-prompts-fundamentals',
+    name: 'AI Prompts Fundamentals',
+    issuer: 'Coddy',
+    date: 'August 22, 2026',
+    covers: [
+      'Model',
+      'Tokens',
+      'System prompt',
+      'User prompt',
+      'Output format',
+    ],
+    image: '/cert-ai-prompts.png',
+    verifyUrl: 'https://coddy.tech/certifications/nVsWI5-prompts-gO3Q1x',
+  },
+  {
+    id: 'genai-mastermind',
+    name: 'Generative AI Mastermind',
+    issuer: 'Outskill',
+    date: 'August 15–17, 2026',
+    covers: [
+      'Content writing',
+      'Workflow automation',
+      'Vibe coding',
+      'Image and video generation',
+    ],
+    image: '/cert-genai-mastermind.png',
+    verifyUrl: null,
+  },
+
+  // To add another certification, copy a block above and edit it.
+  // Every field except `id` and `name` is optional — leave out what doesn't apply.
 ]
 
 
@@ -300,7 +337,7 @@ export const highlights = [
 
 export const resume = {
   summary:
-    'Experienced technology professional with 15+ years in the IT industry, including tenure at TCS and a background in Mainframe and Big Data. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
+    'Experienced technology professional with more than 15 years in the IT industry, including tenure at TCS and a background in Mainframe and Big Data. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
 
   // To offer a downloadable resume: put the PDF in the "public" folder and
   // write its name here, e.g. resumeFile: '/Hemasri-Resume.pdf'. Keep null
