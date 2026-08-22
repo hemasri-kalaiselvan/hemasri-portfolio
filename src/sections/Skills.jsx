@@ -9,7 +9,7 @@ export default function Skills() {
       id="skills"
       eyebrow="Skills & technologies"
       title="Grouped by where they live in the journey"
-      intro="From enterprise foundations to emerging tools. Only technologies genuinely used or explored appear here — this list grows as the work does."
+      intro="From enterprise systems to emerging tools. Only technologies genuinely used or explored appear here — this list grows as the work does."
       alt
     >
       <div className="skills__grid">
