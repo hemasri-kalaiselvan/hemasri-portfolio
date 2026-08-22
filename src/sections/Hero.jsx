@@ -39,7 +39,17 @@ export default function Hero() {
 
         <div className="hero__aside" aria-hidden={hero.photo ? undefined : 'true'}>
           {hero.photo ? (
-            <img className="hero__photo" src={hero.photo} alt={name} />
+            <img
+  className="hero__photo"
+  src={
+    /^https?:\/\//.test(hero.photo)
+      ? hero.photo
+      : import.meta.env.BASE_URL.replace(/\/$/, '') +
+        '/' +
+        hero.photo.replace(/^\//, '')
+  }
+  alt={name}
+/>
           ) : (
             <div className="hero__monogram">
               <span className="hero__monogram-mark">{initials}</span>
