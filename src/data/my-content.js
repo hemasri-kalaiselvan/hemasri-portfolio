@@ -300,7 +300,7 @@ export const highlights = [
 
 export const resume = {
   summary:
-    'Experienced technology professional with more than 15 years in the IT industry, including tenure at TCS and a background in Mainframe and Big Data. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
+    'Experienced technology professional with 15+ years in the IT industry, including tenure at TCS and a background in Mainframe and Big Data. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
 
   // To offer a downloadable resume: put the PDF in the "public" folder and
   // write its name here, e.g. resumeFile: '/Hemasri-Resume.pdf'. Keep null
