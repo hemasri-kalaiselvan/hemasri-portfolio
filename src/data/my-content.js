@@ -229,7 +229,9 @@ export const projects = [
     ],
 
     // The technologies used. Add them once known, e.g. ['React', 'CSS'].
-    technologies: [],
+    //technologies: [],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'PWA'],
+
 
     architecture: null,   // optional: describe the workflow/architecture
     challenges: [],        // optional: real challenges you faced
