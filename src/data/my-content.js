@@ -342,7 +342,7 @@ export const resume = {
   // To offer a downloadable resume: put the PDF in the "public" folder and
   // write its name here, e.g. resumeFile: '/Hemasri-Resume.pdf'. Keep null
   // and the button politely shows "coming soon".
-  resumeFile: null,
+  resumeFile: '/Hemasri-Kalaiselvan-Resume.pdf',
 
   // A link to an online resume, if any. Otherwise null.
   onlineResumeUrl: null,
