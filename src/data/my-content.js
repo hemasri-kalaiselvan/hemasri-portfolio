@@ -62,7 +62,7 @@ export const about = {
 
   // The four short pillars shown beside your story. Edit the text only.
   pillars: [
-    { label: 'Experience', text: '15+ years across enterprise technology' },
+    { label: 'Experience', text: 'Enterprise technology at scale' },
     { label: 'Evolution', text: 'Mainframe and Big Data expertise' },
     { label: 'Exploration', text: 'AI and emerging technologies' },
     { label: 'Building', text: 'Practical projects and solutions' },
@@ -337,7 +337,7 @@ export const highlights = [
 
 export const resume = {
   summary:
-    'Experienced technology professional with 15+ years in the IT industry, including tenure at TCS and a background in Mainframe and Big Data. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
+    'Experienced technology professional with a strong background in Mainframe and Big Data, including tenure at TCS. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
 
   // To offer a downloadable resume: put the PDF in the "public" folder and
   // write its name here, e.g. resumeFile: '/Hemasri-Resume.pdf'. Keep null
