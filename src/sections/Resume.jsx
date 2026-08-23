@@ -5,6 +5,11 @@ import './Resume.css'
 
 export default function Resume() {
   const { resume } = profile
+  const base = import.meta.env.BASE_URL
+  const resumeHref = resume.resumeFile
+    ? `${base}${resume.resumeFile.replace(/^\//, '')}`
+    : null
+  
   return (
     <Section
       id="resume"
@@ -19,7 +24,8 @@ export default function Resume() {
           {resume.resumeFile ? (
             <a
               className="btn btn--primary"
-              href={resume.resumeFile}
+              //href={resume.resumeFile}
+              href={resumeHref}
               download
             >
               <Icon name="download" size={17} />
