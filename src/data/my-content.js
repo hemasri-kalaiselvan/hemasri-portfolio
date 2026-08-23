@@ -360,7 +360,7 @@ export const resume = {
  * ------------------------------------------------------------------------- */
 
 export const contact = {
-  email: null,      // e.g. 'name@example.com'
+  email: 'vsks5587@gmail.com',      // e.g. 'name@example.com'
   linkedin: 'https://www.linkedin.com/in/hemasri-kalaiselvan/',   // e.g. 'https://www.linkedin.com/in/your-handle'
   github: 'https://github.com/hemasri-kalaiselvan',     // e.g. 'https://github.com/your-handle'
 
