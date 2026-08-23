@@ -1,5 +1,5 @@
 /* ============================================================================
- * 
+ *
  *   YOUR PERSONAL INFORMATION — EDIT THIS FILE ONLY
  *
  *   This is the ONLY file you ever need to open to change what appears on
@@ -39,7 +39,7 @@ export const identity = {
 
   // The short introduction paragraph on the home screen.
   intro:
-    'More than 15 years in enterprise technology, with a foundation in Mainframe and Big Data. Today that same journey continues into Artificial Intelligence, emerging technologies, and hands-on projects — one path of experience, evolution, and continuous building.',
+    'A career in enterprise technology, grounded in Mainframe and Big Data. Today that same journey continues into Artificial Intelligence, emerging technologies, and hands-on projects — one path of experience, evolution, and continuous building.',
 
   // Path to a profile photo, if you have one.
   // Leave as null to show a clean monogram instead of a photo.
@@ -55,15 +55,15 @@ export const identity = {
 
 export const about = {
   paragraphs: [
-    'My career spans more than fifteen years in enterprise technology, built on the discipline that large-scale Mainframe and Big Data systems demand. Working close to the systems that businesses depend on has shaped how I think about reliability, data, and solving real problems well.',
-    'That foundation is not a chapter I have closed — it is the ground I build on. As technology has evolved, so has my work, moving from established enterprise platforms toward data at scale and, increasingly, toward Artificial Intelligence and emerging tools.',
+    'My career in enterprise technology is built on the discipline that large-scale Mainframe and Big Data systems demand. Working close to the systems that businesses depend on has shaped how I think about reliability, data, and solving real problems well.',
+    'That experience is not a chapter I have closed — it is the ground I build on. As technology has evolved, so has my work, moving from established enterprise platforms toward data at scale and, increasingly, toward Artificial Intelligence and emerging tools.',
     'I explore new technology the way I have always worked: practically. I learn by building, experimenting, and documenting what actually works. This portfolio brings that whole journey together — the experience behind me, the exploration in front of me, and the projects that connect the two.',
   ],
 
   // The four short pillars shown beside your story. Edit the text only.
   pillars: [
     { label: 'Experience', text: '15+ years across enterprise technology' },
-    { label: 'Evolution', text: 'Mainframe and Big Data foundations' },
+    { label: 'Evolution', text: 'Mainframe and Big Data expertise' },
     { label: 'Exploration', text: 'AI and emerging technologies' },
     { label: 'Building', text: 'Practical projects and solutions' },
   ],
@@ -88,8 +88,8 @@ export const experience = [
     id: 'tcs',
     company: 'TCS',            // company name — change to mask if needed
     role: ['Developer', 'Production Support'],                // e.g. 'Senior Systems Engineer' — or keep null
-    duration: 'More than 15 years',
-    period: '2009 — Jun 2026',              // e.g. '2009 — Present' — or keep null
+    duration: '15+ years',
+    period: 'Sep 2009 — Jun 2026',              // e.g. '2009 — Present' — or keep null
     technologyAreas: ['Mainframe', 'Big Data'],
     responsibilities: [
       // 'Add a real responsibility here',
@@ -97,7 +97,7 @@ export const experience = [
 		  title: 'Development',
           items: [
 					'Component development and enhancements',
-					'Defects fixes                         ',
+					'Defect fixes                          ',
 					'Unit testing                          ',
 					'UAT deployment                        ',
 					'UAT batch execution                   ',
@@ -120,7 +120,7 @@ export const experience = [
       // 'Add a real contribution here',
 	  'Component creation',
 	  'Application enhancement',
-	  'Task Automation',
+	  'Task automation',
 	  'Root cause analysis'
     ],
     projects: [
@@ -163,7 +163,7 @@ export const skills = [
     description: 'Big Data platforms and data processing.',
     icon: 'database',
     items: [
-       'Hadoop', 'PySpark', 'Hive', 'Oozie', 'HBASE', 'Shell Scripts'
+       'Hadoop', 'PySpark', 'Hive', 'Oozie', 'HBase', 'Shell Scripts'
     ],
   },
   {
@@ -183,7 +183,7 @@ export const skills = [
     icon: 'code',
     items: [
       // add web/app technologies you actually use
-	  'HTML', 'CSS', 'Javascript', 'React', 'Git', 'GitHub'
+	  'HTML', 'CSS', 'JavaScript', 'React', 'Git', 'GitHub'
     ],
   },
 ]
@@ -337,7 +337,7 @@ export const highlights = [
 
 export const resume = {
   summary:
-    'Experienced technology professional with more than 15 years in the IT industry, including tenure at TCS and a background in Mainframe and Big Data. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
+    'Experienced technology professional with 15+ years in the IT industry, including tenure at TCS and a background in Mainframe and Big Data. Currently expanding into Artificial Intelligence and emerging technologies through practical, project-based learning.',
 
   // To offer a downloadable resume: put the PDF in the "public" folder and
   // write its name here, e.g. resumeFile: '/Hemasri-Resume.pdf'. Keep null
