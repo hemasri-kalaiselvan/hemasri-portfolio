@@ -240,10 +240,9 @@ export const projects = [
 
     // Real links only. Leave as null until you have them.
     links: {
-      live: null,          // e.g. 'https://vetrihub.example.com'
-      source: null,        // e.g. 'https://github.com/you/vetrihub'
-    },
-
+ 	 	live: 'https://hemasri-kalaiselvan.github.io/vetrihub/',
+ 	 	source: 'https://github.com/hemasri-kalaiselvan/vetrihub',
+	},
     featureNote: 'Additional utilities may be added to VetriHub over time.',
   },
 
