@@ -128,10 +128,16 @@ export const experience = [
 	  'Banking', 'Retail'
     ],
     achievements: [
+      'Built an automated monitoring job running every 15 minutes that flagged failed, long-running, and SLA-breaching jobs via email — enabling the team to act immediately and keep batches within SLA. Received an Appreciation Award for the same',
+      'Automated recurring reports with a job that reads files, generates Excel output, and emails it directly — replacing manual checks and data entry',
+      'Introduced input-check flags that skipped downstream jobs when input was empty, avoiding unnecessary CPU usage and reducing processing costs',
+      'Developed a job to monitor critical workflow checklists and alert on abnormalities via email, catching batch issues early'
+    ],
+	  /*achievements: [
       // 'Add a real achievement here',
 	  'Automated some recurring production support tasks — Recognized with an Appreciation Award'
 
-    ],
+    ],*/
     current: false,             // true shows a "Current" badge
   },
 
