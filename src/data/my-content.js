@@ -50,6 +50,28 @@ export const identity = {
 
 
 /* ---------------------------------------------------------------------------
+ *  SECTION VISIBILITY  — show or hide whole sections of the site
+ *
+ *  Set a section to  true  to SHOW it, or  false  to HIDE it.
+ *  Hiding a section removes it from the page AND from the top menu.
+ *  Your content stays safe either way — hiding never deletes anything,
+ *  so you can show a section again anytime by switching it back to true.
+ *
+ *  (The Home/Hero, Resume, and Contact are always shown.)
+ * ------------------------------------------------------------------------- */
+
+export const sectionVisibility = {
+  about: false,           // your professional story
+  experience: true,       // work history
+  skills: true,           // skills and technologies
+  projects: true,         // projects (VetriHub, etc.)
+  aiExploration: true,    // AI exploration entries
+  certifications: true,   // certifications
+  highlights: false,      // career highlights
+}
+
+
+/* ---------------------------------------------------------------------------
  *  2. ABOUT  — your professional story (three short paragraphs)
  * ------------------------------------------------------------------------- */
 
