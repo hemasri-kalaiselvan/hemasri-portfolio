@@ -1,102 +1,44 @@
 # Hemasri Kalaiselvan — Portfolio
 
-A modern, responsive personal portfolio for an experienced technology professional.
-Built with React + Vite, structured for easy long-term maintenance and GitHub Pages hosting.
+> A modern, responsive personal portfolio presenting one connected career journey — from Mainframe and Big Data into AI.
 
-**Journey:** Experience → Evolution → Exploration → Building → Growth
+**Tech:** React, Vite, JavaScript, CSS
+**Tools:** GitHub
+**AI Tools:** ChatGPT, Claude
 
----
+## About
 
-## Quick start
+This is the personal portfolio of Hemasri Kalaiselvan, an experienced technology professional with a background in Mainframe and Big Data at TCS, now exploring Artificial Intelligence. The site presents that whole journey as one continuous story — experience, evolution, exploration, and building — rather than two separate careers.
 
-```bash
-npm install       # install dependencies
-npm run dev       # start local dev server (http://localhost:5173)
-npm run build     # production build into /dist
-npm run preview   # preview the production build locally
-```
+It brings together a professional summary, work experience and achievements, skills across enterprise and data technologies, projects, certifications, and a downloadable resume. Built to be easy to maintain: all content lives in a single file, so updates are simple text edits, and whole sections can be shown or hidden without touching code.
 
-Requires Node.js 18+ (20 recommended).
+The site you're viewing is itself the project — designed and built with AI assistance and hosted free on GitHub Pages.
 
----
+## How AI Helped
 
-## How the content is organised
+- **ChatGPT** — initial design direction and the first build prompt
+- **Claude** — finalized the prompt, and assisted with the code, debugging, and deployment
+- **GitHub** — source hosting and free deployment via GitHub Pages
 
-**All your personal information lives in ONE file:**
+The full documentation of how this site was designed, prompted, and built:
 
-```
-src/data/my-content.js
-```
+- [Design Document](docs/Design-Document.md)
+- [Prompt Document](docs/Prompt-Document.md)
+- [Build & Deployment](docs/Build-and-Deployment.md)
 
-This is the only file you ever need to open to change what appears on your
-website — your name, company, experience, skills, projects, resume, and contact
-links are all here, with plain-English instructions inside. Open it in Notepad
-(or any editor), change the text between the quote marks, save, and the whole
-site updates.
+### The process
 
-**Common examples:**
+The base design and an initial prompt were drafted with ChatGPT, then refined with Claude into a complete specification. From there, the site was built and deployed working hands-on with Claude — including the content structure, styling, project pages, the show/hide section system, and the GitHub Pages deployment.
 
-- **Mask your name** — change `name: 'Hemasri Kalaiselvan',` to `name: 'H. K.',`
-- **Mark a company private** — change `company: 'TCS',` to `company: 'Private concern',`
-- **Hide something** — set it to `null` (e.g. `email: null,`)
-- **Show a contact** — put it in quotes (e.g. `email: 'you@example.com',`)
-- **Add a skill** — add it inside the brackets: `items: ['COBOL', 'JCL'],`
+### What I learned
 
-The other files in `src/data/` (`profile.js`, `experience.js`, etc.) simply
-read from `my-content.js` — you don't need to touch them.
+Building this site hands-on showed how AI can act as a practical building partner across the whole process — design, code, debugging, and deployment — when paired with clear direction and careful review at each step.
 
 ---
 
-## Deploying to GitHub Pages
+## Tech notes
 
-### 1. Set the base path
-
-Two files reference the repo name. Update them to match your repo:
-
-- `vite.config.js` → `base: '/YOUR-REPO-NAME/'`
-  (use `base: '/'` if the repo is named `YOUR-USERNAME.github.io`)
-- `package.json` → `homepage` field
-
-### 2. Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial portfolio"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-git push -u origin main
-```
-
-### 3. Enable Pages
-
-In the repo: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-
-The included workflow (`.github/workflows/deploy.yml`) builds and deploys
-automatically on every push to `main`. Your site appears at:
-
-```
-https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
-```
-
-### Manual alternative
-
-```bash
-npm run build
-npm run deploy   # publishes /dist to the gh-pages branch
-```
-
----
-
-## Routing note
-
-The site uses `HashRouter`, so project pages look like
-`/#/projects/vetrihub`. This is intentional — it makes deep links and refreshes
-work on GitHub Pages without any server configuration.
-
----
-
-## Tech
-
-React 18 · Vite 5 · React Router 6 · plain CSS with design tokens · light/dark themes.
-No UI framework, no external icon/logo dependencies.
+- React + Vite, deployed on GitHub Pages via GitHub Actions.
+- All personal content lives in a single file (`src/data/my-content.js`), separate from the code.
+- Uses hash-based routing so project detail pages work correctly on GitHub Pages.
+- Light and dark themes, remembered across visits.
