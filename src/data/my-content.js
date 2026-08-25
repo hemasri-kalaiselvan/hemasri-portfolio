@@ -227,48 +227,27 @@ export const skills = [
  *  "to be added" note. Never put information you don't actually have.
  * ------------------------------------------------------------------------- */
 
+/*
+ *  Projects are now driven entirely by their GitHub repositories.
+ *
+ *  You only list the REPOSITORY NAME of each project you want to show.
+ *  Everything else — the title, description, technologies, tools, and the
+ *  full project page — is read automatically from that repo's README.md.
+ *
+ *  To ADD a project:   add its repo name to the list below.
+ *  To HIDE a project:  remove its repo name (or comment it out with //).
+ *  To REORDER:         change the order in the list.
+ *
+ *  The order here is the order the project cards appear on the site.
+ *
+ *  (Each repo's README should follow the shared structure so its title,
+ *   description, and tool tags are picked up — but every part is optional,
+ *   and a missing part is simply skipped.)
+ */
+
 export const projects = [
-  {
-    slug: 'vetrihub',
-    name: 'VetriHub',
-    status: 'Live',                 // e.g. 'Live', 'In progress'
-    summary: 'A personal utility website bringing together useful everyday tools.',
-
-    purpose:
-      'VetriHub started as a personal need for a single, reliable place to keep practical everyday tools together — built and maintained hands-on rather than pieced together from separate apps.',
-
-    solution:
-      'A lightweight utility website that houses a growing set of focused tools under one roof, designed to be simple to use and straightforward to extend with new utilities over time.',
-
-    role:
-      'Designed, built, and maintains VetriHub end to end as a personal project.',
-
-    // The real features of the project.
-    features: [
-      { name: 'Cycle Tracker', text: 'A tool for tracking cycles.' },
-      { name: 'Recipe', text: 'A recipe utility.' },
-      { name: 'Situations & Solutions', text: 'A practical situations-and-solutions reference.' },
-    ],
-
-    // The technologies used. Add them once known, e.g. ['React', 'CSS'].
-    //technologies: [],
-    technologies: ['HTML', 'CSS', 'JavaScript', 'PWA'],
-
-
-    architecture: null,   // optional: describe the workflow/architecture
-    challenges: [],        // optional: real challenges you faced
-    learnings: [],         // optional: real things you learned
-    screenshots: [],       // optional: [{ src: '/vetrihub.png', alt: 'VetriHub' }]
-
-    // Real links only. Leave as null until you have them.
-    links: {
- 	 	live: 'https://hemasri-kalaiselvan.github.io/vetrihub/',
- 	 	source: 'https://github.com/hemasri-kalaiselvan/vetrihub',
-	},
-    featureNote: 'Additional utilities may be added to VetriHub over time.',
-  },
-
-  // To add another project, copy the block above and paste it here.
+  'hemasri-portfolio',
+  'vetrihub',
 ]
 
 
