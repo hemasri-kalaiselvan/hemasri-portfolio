@@ -1,29 +1,52 @@
-import { useEffect } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { getProjectBySlug } from '../data/projects'
+import { getProjectRepo } from '../data/projects'
+import { loadProject, repoUrl } from '../lib/readme'
 import Icon from '../components/Icon'
 import './ProjectDetail.css'
 
-function Block({ eyebrow, title, children }) {
-  return (
-    <section className="pd__block">
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      {title && <h2 className="pd__block-title">{title}</h2>}
-      {children}
-    </section>
-  )
-}
+// react-markdown is only loaded when a project page is actually opened,
+// so it never affects the speed of the main site.
+const ReactMarkdown = lazy(() => import('react-markdown'))
 
 export default function ProjectDetail() {
   const { slug } = useParams()
   const navigate = useNavigate()
-  const project = getProjectBySlug(slug)
+  const repo = getProjectRepo(slug)
+
+  const [data, setData] = useState(null)
+  const [state, setState] = useState('loading') // loading | ready | error
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [slug])
 
-  if (!project) {
+  useEffect(() => {
+    if (!repo) return
+    let active = true
+    setState('loading')
+    loadProject(repo)
+      .then((d) => {
+        if (!active) return
+        setData(d)
+        setState(d.body ? 'ready' : 'error')
+      })
+      .catch(() => active && setState('error'))
+    return () => {
+      active = false
+    }
+  }, [repo])
+
+  const backToProjects = () => {
+    navigate('/')
+    setTimeout(() => {
+      const el = document.getElementById('projects')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }, 60)
+  }
+
+  // Repo not even listed in my-content.js
+  if (!repo) {
     return (
       <main className="pd">
         <div className="container pd__notfound">
@@ -41,15 +64,11 @@ export default function ProjectDetail() {
     )
   }
 
-  const backToProjects = () => {
-    navigate('/')
-    setTimeout(() => {
-      const el = document.getElementById('projects')
-      if (el) el.scrollIntoView({ behavior: 'smooth' })
-    }, 60)
-  }
-
-  const hasLinks = project.links?.live || project.links?.source
+  const title = data?.title || slug
+  const description = data?.description
+  const tech = data?.tech || []
+  const tools = data?.tools || []
+  const aiTools = data?.aiTools || []
 
   return (
     <main className="pd">
@@ -61,137 +80,72 @@ export default function ProjectDetail() {
 
         <header className="pd__header">
           <div className="pd__header-top">
-            <h1 className="pd__title">{project.name}</h1>
-            {project.status && (
-              <span className="pd__status">{project.status}</span>
-            )}
+            <h1 className="pd__title">{title}</h1>
           </div>
-          <p className="pd__lead">{project.summary}</p>
+          {description && <p className="pd__lead">{description}</p>}
 
-          {hasLinks && (
-            <div className="pd__links">
-              {project.links.live && (
-                <a
-                  className="btn btn--primary"
-                  href={project.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon name="external" size={16} />
-                  Live project
-                </a>
-              )}
-              {project.links.source && (
-                <a
-                  className="btn btn--ghost"
-                  href={project.links.source}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon name="github" size={16} />
-                  Source code
-                </a>
-              )}
+          {(tech.length > 0 || tools.length > 0 || aiTools.length > 0) && (
+            <div className="pd__tags">
+              {tech.map((t) => (
+                <span key={`tech-${t}`} className="chip chip--tech">{t}</span>
+              ))}
+              {tools.map((t) => (
+                <span key={`tool-${t}`} className="chip chip--tech">{t}</span>
+              ))}
+              {aiTools.map((t) => (
+                <span key={`ai-${t}`} className="chip chip--ai">{t}</span>
+              ))}
             </div>
           )}
+
+          <div className="pd__links">
+            <a
+              className="btn btn--primary"
+              href={`https://hemasri-kalaiselvan.github.io/${repo}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="external" size={16} />
+              Live project
+            </a>
+            <a
+              className="btn btn--ghost"
+              href={repoUrl(repo)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="github" size={16} />
+              Source code
+            </a>
+          </div>
         </header>
 
         <div className="pd__body">
-          {project.purpose && (
-            <Block eyebrow="Problem / purpose" title="Why it exists">
-              <p className="pd__text">{project.purpose}</p>
-            </Block>
+          {state === 'loading' && (
+            <p className="placeholder-note">Loading project details…</p>
           )}
 
-          {project.solution && (
-            <Block eyebrow="Solution" title="How it works">
-              <p className="pd__text">{project.solution}</p>
-            </Block>
+          {state === 'error' && (
+            <p className="placeholder-note">
+              Project details will load from the repository. You can also view
+              the project directly using the links above.
+            </p>
           )}
 
-          {project.role && (
-            <Block eyebrow="My role & contribution">
-              <p className="pd__text">{project.role}</p>
-            </Block>
-          )}
-
-          {project.features?.length > 0 && (
-            <Block eyebrow="Key features">
-              <ul className="pd__features">
-                {project.features.map((f) => (
-                  <li key={f.name} className="pd__feature card">
-                    <h3 className="pd__feature-name">{f.name}</h3>
-                    {f.text && <p className="pd__feature-text">{f.text}</p>}
-                  </li>
-                ))}
-              </ul>
-              {project.featureNote && (
-                <p className="placeholder-note pd__feature-note">
-                  {project.featureNote}
-                </p>
-              )}
-            </Block>
-          )}
-
-          <Block eyebrow="Technologies used">
-            {project.technologies?.length > 0 ? (
-              <div className="pd__tech">
-                {project.technologies.map((t) => (
-                  <span key={t} className="chip chip--tech">
-                    {t}
-                  </span>
-                ))}
+          {state === 'ready' && (
+            <Suspense fallback={<p className="placeholder-note">Rendering…</p>}>
+              <div className="pd__markdown">
+                <ReactMarkdown
+                  components={{
+                    a: ({ node, ...props }) => (
+                      <a target="_blank" rel="noopener noreferrer" {...props} />
+                    ),
+                  }}
+                >
+                  {data.body}
+                </ReactMarkdown>
               </div>
-            ) : (
-              <p className="placeholder-note">
-                The technology stack will be documented here
-              </p>
-            )}
-          </Block>
-
-          {project.architecture && (
-            <Block eyebrow="Architecture / workflow">
-              <p className="pd__text">{project.architecture}</p>
-            </Block>
-          )}
-
-          <Block eyebrow="Screenshots / demonstrations">
-            {project.screenshots?.length > 0 ? (
-              <div className="pd__shots">
-                {project.screenshots.map((s, i) => (
-                  <figure key={i} className="pd__shot card">
-                    <img src={s.src} alt={s.alt || `${project.name} screenshot ${i + 1}`} />
-                    {s.caption && <figcaption>{s.caption}</figcaption>}
-                  </figure>
-                ))}
-              </div>
-            ) : (
-              <div className="pd__shot-empty card">
-                <p className="placeholder-note">
-                  Screenshots, images, or a demo video will appear here
-                </p>
-              </div>
-            )}
-          </Block>
-
-          {project.challenges?.length > 0 && (
-            <Block eyebrow="Challenges">
-              <ul className="pd__list">
-                {project.challenges.map((c, i) => (
-                  <li key={i}>{c}</li>
-                ))}
-              </ul>
-            </Block>
-          )}
-
-          {project.learnings?.length > 0 && (
-            <Block eyebrow="Key learnings">
-              <ul className="pd__list">
-                {project.learnings.map((l, i) => (
-                  <li key={i}>{l}</li>
-                ))}
-              </ul>
-            </Block>
+            </Suspense>
           )}
         </div>
 
