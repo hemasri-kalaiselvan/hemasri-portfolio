@@ -21,56 +21,37 @@
   font-size: 1.5rem;
   margin: 0;
 }
-.pcard__status {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-soft-bg);
-  padding: 4px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
 
 .pcard__summary {
   color: var(--text-secondary);
   font-size: 1rem;
   margin: 0 0 20px;
 }
-
-.pcard__features {
-  margin-bottom: 18px;
-}
-.pcard__features-label,
-.pcard__tech-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.pcard__summary--muted {
   color: var(--text-muted);
-  margin-bottom: 10px;
-}
-.pcard__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
 }
 
-.pcard__tech {
+/* Tag row: tech + tools + AI tools together */
+.pcard__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 20px;
 }
+
+/* Tech and non-AI tools: neutral / grey */
 .chip--tech {
-  background: var(--accent-soft-bg);
-  border-color: transparent;
-  color: var(--accent);
+  background: var(--surface-2, transparent);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
 }
-.pcard__tech-note {
-  margin-bottom: 20px;
+
+/* AI tools: highlighted with the accent colour */
+.chip--ai {
+  background: var(--accent-soft-bg);
+  border: 1px solid transparent;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .pcard__footer {
