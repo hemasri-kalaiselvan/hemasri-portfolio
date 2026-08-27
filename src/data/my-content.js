@@ -65,7 +65,7 @@ export const sectionVisibility = {
   experience: true,       // work history
   skills: true,           // skills and technologies
   projects: true,         // projects (VetriHub, etc.)
-  aiExploration: true,    // AI exploration entries
+  aiExploration: false,   // old standalone section — now merged into Projects & AI Exploration
   certifications: true,   // certifications
   highlights: false,      // career highlights
 }
