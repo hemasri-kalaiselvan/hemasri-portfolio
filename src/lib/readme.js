@@ -115,6 +115,19 @@ function stripHeader(markdown) {
   return lines.slice(i).join('\n').trim()
 }
 
+// Rewrite relative links in the README (like docs/Design-Document.md) into
+// absolute GitHub URLs, so they work when rendered on the deployed site
+// rather than 404-ing against the portfolio's own address.
+function absolutizeLinks(markdown, repo, branch = DEFAULT_BRANCH) {
+  // Matches markdown links [text](target) where target is a relative path
+  // (doesn't start with http, #, or /).
+  return markdown.replace(
+    /\]\((?!https?:\/\/|#|\/)([^)]+)\)/g,
+    (match, target) =>
+      `](https://github.com/${GITHUB_OWNER}/${repo}/blob/${branch}/${target})`
+  )
+}
+
 // Parse a full README into the structured pieces the UI needs.
 // Any missing piece comes back as null / empty array, never throws.
 export function parseReadme(markdown, repo) {
@@ -129,13 +142,14 @@ export function parseReadme(markdown, repo) {
     }
   }
 
+  const stripped = stripHeader(markdown)
   return {
     title: parseTitle(markdown) || prettyRepoName(repo),
     description: parseDescription(markdown),
     tech: parseLabelList(markdown, 'Tech'),
     tools: parseLabelList(markdown, 'Tools'),
     aiTools: parseLabelList(markdown, 'AI Tools'),
-    body: stripHeader(markdown),
+    body: absolutizeLinks(stripped, repo),
   }
 }
 
