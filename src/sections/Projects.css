@@ -10,3 +10,49 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Explore → Experiment → Build → Document flow */
+.projects__flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.projects__phase {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  flex: 1 1 auto;
+  min-width: 130px;
+}
+.projects__phase-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+.projects__phase-name {
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+.projects__phase-arrow {
+  position: absolute;
+  right: -13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-top: 1.6px solid var(--border-strong);
+  border-right: 1.6px solid var(--border-strong);
+  rotate: 45deg;
+  z-index: 1;
+}
+@media (max-width: 620px) {
+  .projects__phase-arrow {
+    display: none;
+  }
+}
