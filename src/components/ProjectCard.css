@@ -40,14 +40,16 @@
 }
 
 /* Tech and non-AI tools: neutral / grey */
-.chip--tech {
+.chip.chip--tech {
   background: var(--surface-2, transparent);
   border: 1px solid var(--border);
   color: var(--text-secondary);
 }
 
-/* AI tools: clearly highlighted with a solid accent background */
-.chip--ai {
+/* AI tools: clearly highlighted with a solid accent background.
+   Uses .chip.chip--ai for higher specificity so it always wins
+   over the base .chip style regardless of stylesheet order. */
+.chip.chip--ai {
   background: var(--accent);
   border: 1px solid var(--accent);
   color: #ffffff;
