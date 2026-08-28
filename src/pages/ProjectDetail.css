@@ -201,7 +201,9 @@
   margin: 0 0 1em;
   padding-left: 1.4em;
 }
-.pd__markdown li { margin-bottom: 0.4em; }
+.pd__markdown ul { list-style: disc; }
+.pd__markdown ol { list-style: decimal; }
+.pd__markdown li { margin-bottom: 0.4em; display: list-item; }
 .pd__markdown a {
   color: var(--accent);
   text-decoration: underline;
