@@ -101,7 +101,7 @@ function stripHeader(markdown) {
     if (t === '') return true
     if (/^#\s+/.test(t)) return true // # title
     if (/^>\s+/.test(t)) return true // > description
-    if (/^\*{0,2}(Tech|Tools|AI Tools)\*{0,2}\s*[:：]/i.test(t)) return true
+    if (/^\*{0,2}(Tech|Tools|AI Tools|Live)\*{0,2}\s*[:：]/i.test(t)) return true
     if (/^-{3,}$/.test(t)) return true // horizontal rule right after header
     return false
   }
@@ -130,6 +130,16 @@ function absolutizeLinks(markdown, repo, branch = DEFAULT_BRANCH) {
 
 // Parse a full README into the structured pieces the UI needs.
 // Any missing piece comes back as null / empty array, never throws.
+// Read an optional "**Live:** https://..." line. This lets a project declare
+// its own live URL (e.g. a Vercel or Netlify site) instead of the site
+// assuming a GitHub Pages address. Returns the URL string, or null.
+function parseLiveUrl(markdown) {
+  const m = markdown.match(
+    /^\s*\*{0,2}Live\*{0,2}\s*[:：]\s*\*{0,2}\s*(\S+)/im
+  )
+  return m ? m[1].trim() : null
+}
+
 export function parseReadme(markdown, repo) {
   if (!markdown) {
     return {
@@ -138,6 +148,7 @@ export function parseReadme(markdown, repo) {
       tech: [],
       tools: [],
       aiTools: [],
+      liveUrl: null,
       body: null,
     }
   }
@@ -149,6 +160,7 @@ export function parseReadme(markdown, repo) {
     tech: parseLabelList(markdown, 'Tech'),
     tools: parseLabelList(markdown, 'Tools'),
     aiTools: parseLabelList(markdown, 'AI Tools'),
+    liveUrl: parseLiveUrl(markdown),
     body: absolutizeLinks(stripped, repo),
   }
 }
