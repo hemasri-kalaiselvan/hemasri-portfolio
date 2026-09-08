@@ -69,6 +69,9 @@ export default function ProjectDetail() {
   const tech = data?.tech || []
   const tools = data?.tools || []
   const aiTools = data?.aiTools || []
+  // Use the README's "**Live:**" URL if given (e.g. a Vercel-hosted project),
+  // otherwise fall back to the GitHub Pages address for this repo.
+  const liveUrl = data?.liveUrl || `https://hemasri-kalaiselvan.github.io/${repo}/`
 
   return (
     <main className="pd">
@@ -101,7 +104,7 @@ export default function ProjectDetail() {
           <div className="pd__links">
             <a
               className="btn btn--primary"
-              href={`https://hemasri-kalaiselvan.github.io/${repo}/`}
+              href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
