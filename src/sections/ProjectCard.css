@@ -1,0 +1,109 @@
+.pcard {
+  padding: 26px 26px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pcard:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* The whole card behaves like one clickable button. */
+.pcard--clickable {
+  position: relative;
+  cursor: pointer;
+}
+/* Lift the accent on hover so the whole tile clearly reads as clickable. */
+.pcard--clickable:hover {
+  border-color: var(--accent);
+}
+/* Keyboard focus: highlight the whole card when the stretched link is focused. */
+.pcard--clickable:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.pcard__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.pcard__name {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.pcard__summary {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0 0 20px;
+}
+.pcard__summary--muted {
+  color: var(--text-muted);
+}
+
+/* Tag row: tech + tools + AI tools together */
+.pcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  position: relative; /* keep tags above the stretched link so text stays selectable */
+  z-index: 1;
+}
+
+/* Tech and non-AI tools: neutral / grey */
+.chip.chip--tech {
+  background: var(--surface-2, transparent);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+/* AI tools: clearly highlighted with a solid accent background.
+   Uses .chip.chip--ai for higher specificity so it always wins
+   over the base .chip style regardless of stylesheet order. */
+.chip.chip--ai {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pcard__footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.pcard__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+.pcard__link:hover {
+  text-decoration: none;
+  color: var(--accent);
+  gap: 12px;
+}
+
+/* Stretch this link to cover the entire card, so a click anywhere opens it.
+   The link's own text/arrow stay visible in the footer; the overlay is
+   an invisible ::after that spans the whole card. */
+.pcard__link--stretched::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+/* When the card is hovered anywhere, the footer link moves like it's hovered. */
+.pcard--clickable:hover .pcard__link {
+  color: var(--accent);
+  gap: 12px;
+}
