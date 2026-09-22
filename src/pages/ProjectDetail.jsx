@@ -21,6 +21,15 @@ export default function ProjectDetail() {
     window.scrollTo(0, 0)
   }, [slug])
 
+  // The README loads asynchronously after the slug changes, so the initial
+  // scroll-to-top above can run before the long content exists. Scroll to the
+  // top again once the content has rendered, so the page opens at the top.
+  useEffect(() => {
+    if (state === 'ready' || state === 'error') {
+      window.scrollTo(0, 0)
+    }
+  }, [state, slug])
+
   useEffect(() => {
     if (!repo) return
     let active = true
