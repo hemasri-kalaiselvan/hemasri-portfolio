@@ -6,9 +6,6 @@ import './ProjectCard.css'
 
 // A project card is built from its GitHub repo README.
 // `repo` is the repository name (e.g. 'vetrihub').
-// The whole card is clickable: the "View case study" link is stretched
-// over the card via CSS, so clicking anywhere on the card opens its page,
-// while keeping just one real link (accessible, no nested-link issues).
 export default function ProjectCard({ repo }) {
   const [data, setData] = useState(null)
   const [failed, setFailed] = useState(false)
@@ -35,7 +32,7 @@ export default function ProjectCard({ repo }) {
   const aiTools = data?.aiTools || []
 
   return (
-    <article className="pcard card pcard--clickable">
+    <article className="pcard card">
       <div className="pcard__top">
         <h3 className="pcard__name">{title}</h3>
       </div>
@@ -69,13 +66,8 @@ export default function ProjectCard({ repo }) {
       )}
 
       <div className="pcard__footer">
-        {/* pcard__link--stretched makes this link cover the whole card */}
-        <Link
-          className="pcard__link pcard__link--stretched"
-          to={`/projects/${repo}`}
-          aria-label={`View the ${title} case study`}
-        >
-          View case study
+        <Link className="pcard__link" to={`/projects/${repo}`}>
+          Read the full case study
           <Icon name="arrowRight" size={16} />
         </Link>
       </div>

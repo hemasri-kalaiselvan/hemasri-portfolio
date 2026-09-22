@@ -10,21 +10,6 @@
   box-shadow: var(--shadow-md);
 }
 
-/* The whole card behaves like one clickable button. */
-.pcard--clickable {
-  position: relative;
-  cursor: pointer;
-}
-/* Lift the accent on hover so the whole tile clearly reads as clickable. */
-.pcard--clickable:hover {
-  border-color: var(--accent);
-}
-/* Keyboard focus: highlight the whole card when the stretched link is focused. */
-.pcard--clickable:focus-within {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-md);
-}
-
 .pcard__top {
   display: flex;
   align-items: center;
@@ -52,8 +37,6 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 20px;
-  position: relative; /* keep tags above the stretched link so text stays selectable */
-  z-index: 1;
 }
 
 /* Tech and non-AI tools: neutral / grey */
@@ -82,28 +65,21 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
-  color: var(--text-primary);
-  transition: gap 0.2s ease, color 0.2s ease;
+  color: var(--accent);
+  /* Button-like pill so it clearly reads as a clickable action */
+  padding: 9px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  transition: gap 0.2s ease, color 0.2s ease,
+    background-color 0.2s ease, border-color 0.2s ease;
 }
 .pcard__link:hover {
   text-decoration: none;
-  color: var(--accent);
-  gap: 12px;
-}
-
-/* Stretch this link to cover the entire card, so a click anywhere opens it.
-   The link's own text/arrow stay visible in the footer; the overlay is
-   an invisible ::after that spans the whole card. */
-.pcard__link--stretched::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-/* When the card is hovered anywhere, the footer link moves like it's hovered. */
-.pcard--clickable:hover .pcard__link {
-  color: var(--accent);
+  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
   gap: 12px;
 }
