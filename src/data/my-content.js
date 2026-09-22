@@ -249,6 +249,7 @@ export const projects = [
   'hemasri-portfolio',
   'vetrihub',
   'ai-content-writer',
+  'sandbox-store',
 ]
 
 
