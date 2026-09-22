@@ -65,13 +65,21 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
-  color: var(--text-primary);
-  transition: gap 0.2s ease, color 0.2s ease;
+  color: var(--accent);
+  /* Button-like pill so it clearly reads as a clickable action */
+  padding: 9px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  transition: gap 0.2s ease, color 0.2s ease,
+    background-color 0.2s ease, border-color 0.2s ease;
 }
 .pcard__link:hover {
   text-decoration: none;
-  color: var(--accent);
+  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent);
   gap: 12px;
 }
