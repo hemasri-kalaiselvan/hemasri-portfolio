@@ -250,6 +250,7 @@ export const projects = [
   'vetrihub',
   'ai-content-writer',
   'sandbox-store',
+  'genai-lab',
 ]
 
 
