@@ -246,11 +246,11 @@ export const skills = [
  */
 
 export const projects = [
+  'genai-lab',
   'hemasri-portfolio',
   'vetrihub',
   'ai-content-writer',
-  'sandbox-store',
-  'genai-lab',
+  'sandbox-store',  
 ]
 
 
