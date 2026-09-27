@@ -49,6 +49,18 @@ export default function ProjectDetail() {
     return () => raf && cancelAnimationFrame(raf)
   }, [slug, state])
 
+  // Live-update the diagnostic marker with the current scroll position.
+  useEffect(() => {
+    const upd = () => {
+      const el = document.getElementById('pd-marker-y')
+      if (el) el.textContent = String(Math.round(window.scrollY))
+    }
+    upd()
+    window.addEventListener('scroll', upd, { passive: true })
+    const iv = setInterval(upd, 300)
+    return () => { window.removeEventListener('scroll', upd); clearInterval(iv) }
+  }, [slug, state])
+
   useEffect(() => {
     if (!repo) return
     let active = true
@@ -103,6 +115,18 @@ export default function ProjectDetail() {
 
   return (
     <main className="pd">
+      {/* TEMP diagnostic marker — remove once confirmed. Shows this build is
+          live and the current scroll position. */}
+      <div
+        style={{
+          position: 'fixed', top: 0, right: 0, zIndex: 9999,
+          background: '#c0392b', color: '#fff', font: '12px/1.4 monospace',
+          padding: '4px 8px', borderBottomLeftRadius: '6px', pointerEvents: 'none',
+        }}
+        id="pd-marker"
+      >
+        FIX v2 · y=<span id="pd-marker-y">?</span>
+      </div>
       <div className="container">
         <button className="pd__back" onClick={backToProjects}>
           <Icon name="arrowLeft" size={16} />
