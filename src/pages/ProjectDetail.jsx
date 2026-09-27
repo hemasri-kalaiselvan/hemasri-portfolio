@@ -12,6 +12,17 @@ const ReactMarkdown = lazy(() => import('react-markdown'))
 // strikethrough. Without it, README tables render as raw "| a | b |" text.
 import remarkGfm from 'remark-gfm'
 
+// Instant jump to the very top (bypasses global smooth-scroll).
+function jumpTop() {
+  try {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  } catch (e) {
+    window.scrollTo(0, 0)
+  }
+  const el = document.scrollingElement || document.documentElement
+  if (el) el.scrollTop = 0
+}
+
 export default function ProjectDetail() {
   const { slug } = useParams()
   const navigate = useNavigate()
@@ -30,17 +41,11 @@ export default function ProjectDetail() {
   useEffect(() => {
     let raf
     const start = Date.now()
-    const jump = () => {
-      try {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-      } catch (e) {
-        window.scrollTo(0, 0)
-      }
-      const el = document.scrollingElement || document.documentElement
-      if (el) el.scrollTop = 0
-      if (Date.now() - start < 600) raf = requestAnimationFrame(jump)
+    const tick = () => {
+      jumpTop()
+      if (Date.now() - start < 800) raf = requestAnimationFrame(tick)
     }
-    jump()
+    tick()
     return () => raf && cancelAnimationFrame(raf)
   }, [slug, state])
 
@@ -160,7 +165,10 @@ export default function ProjectDetail() {
 
           {state === 'ready' && (
             <Suspense fallback={<p className="placeholder-note">Rendering…</p>}>
-              <div className="pd__markdown">
+              <div
+                className="pd__markdown"
+                ref={(node) => { if (node) jumpTop() }}
+              >
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
                   components={{
