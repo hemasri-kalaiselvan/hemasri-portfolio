@@ -314,3 +314,38 @@
   max-width: 100%;
   height: auto;
 }
+
+/* ---------------------------------------------------------------------------
+   Definitive mobile overflow fix.
+   .pd__body is a CSS grid; grid items default to min-width:auto, so a single
+   long token (a URL, a long code identifier) refuses to shrink and pushes the
+   whole page sideways. min-width:0 lets the column shrink, and the break rules
+   force long words to wrap. This is what makes text-heavy READMEs (with long
+   links / code) read correctly on phones — automatically, for every project.
+   --------------------------------------------------------------------------- */
+
+.pd__body {
+  min-width: 0;
+}
+.pd__body > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pd__markdown,
+.pd__markdown p,
+.pd__markdown li,
+.pd__markdown h1,
+.pd__markdown h2,
+.pd__markdown h3,
+.pd__markdown blockquote,
+.pd__markdown a {
+  min-width: 0;
+  overflow-wrap: anywhere;   /* break long URLs / tokens anywhere if needed */
+  word-break: break-word;
+}
+
+/* A long link must not itself force width */
+.pd__markdown a {
+  word-break: break-all;
+}
