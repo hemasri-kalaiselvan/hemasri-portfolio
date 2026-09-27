@@ -20,27 +20,29 @@ export default function ProjectDetail() {
   const [data, setData] = useState(null)
   const [state, setState] = useState('loading') // loading | ready | error
 
+  // Open every project page at the very top.
+  // The site sets `html { scroll-behavior: smooth }` globally, which turns a
+  // scroll-to-top into a SLOW animation. On a long README (which keeps growing
+  // as it lazily renders) that animation gets interrupted and never reaches the
+  // top — leaving the page parked at "About" on mobile. The fix is an INSTANT
+  // jump (behavior:'instant'), re-asserted for a short window to beat the late
+  // layout of very long pages. This works the same for every project.
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [slug])
-
-  // The README loads and renders (lazily) AFTER the slug changes, and mobile
-  // browsers re-adjust scroll once that content lands — which can leave the
-  // page parked mid-way (at "About"). Scroll to top again after paint, with a
-  // short retry, so every project page opens at the very top on mobile too.
-  useEffect(() => {
-    if (state !== 'ready' && state !== 'error') return
-    const toTop = () => window.scrollTo(0, 0)
-    const raf = requestAnimationFrame(() => {
-      toTop()
-      requestAnimationFrame(toTop)
-    })
-    const t = setTimeout(toTop, 120)
-    return () => {
-      cancelAnimationFrame(raf)
-      clearTimeout(t)
+    let raf
+    const start = Date.now()
+    const jump = () => {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+      } catch (e) {
+        window.scrollTo(0, 0)
+      }
+      const el = document.scrollingElement || document.documentElement
+      if (el) el.scrollTop = 0
+      if (Date.now() - start < 600) raf = requestAnimationFrame(jump)
     }
-  }, [state, slug])
+    jump()
+    return () => raf && cancelAnimationFrame(raf)
+  }, [slug, state])
 
   useEffect(() => {
     if (!repo) return
