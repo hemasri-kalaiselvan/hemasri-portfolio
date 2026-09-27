@@ -8,6 +8,9 @@ import './ProjectDetail.css'
 // react-markdown is only loaded when a project page is actually opened,
 // so it never affects the speed of the main site.
 const ReactMarkdown = lazy(() => import('react-markdown'))
+// remark-gfm adds GitHub-flavored markdown: real tables, task lists,
+// strikethrough. Without it, README tables render as raw "| a | b |" text.
+import remarkGfm from 'remark-gfm'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
@@ -21,12 +24,21 @@ export default function ProjectDetail() {
     window.scrollTo(0, 0)
   }, [slug])
 
-  // The README loads asynchronously after the slug changes, so the initial
-  // scroll-to-top above can run before the long content exists. Scroll to the
-  // top again once the content has rendered, so the page opens at the top.
+  // The README loads and renders (lazily) AFTER the slug changes, and mobile
+  // browsers re-adjust scroll once that content lands — which can leave the
+  // page parked mid-way (at "About"). Scroll to top again after paint, with a
+  // short retry, so every project page opens at the very top on mobile too.
   useEffect(() => {
-    if (state === 'ready' || state === 'error') {
-      window.scrollTo(0, 0)
+    if (state !== 'ready' && state !== 'error') return
+    const toTop = () => window.scrollTo(0, 0)
+    const raf = requestAnimationFrame(() => {
+      toTop()
+      requestAnimationFrame(toTop)
+    })
+    const t = setTimeout(toTop, 120)
+    return () => {
+      cancelAnimationFrame(raf)
+      clearTimeout(t)
     }
   }, [state, slug])
 
@@ -148,6 +160,7 @@ export default function ProjectDetail() {
             <Suspense fallback={<p className="placeholder-note">Rendering…</p>}>
               <div className="pd__markdown">
                 <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
                   components={{
                     a: ({ node, ...props }) => (
                       <a target="_blank" rel="noopener noreferrer" {...props} />

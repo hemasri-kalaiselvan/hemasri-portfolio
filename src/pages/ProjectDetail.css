@@ -244,24 +244,25 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Mobile readability for rendered README content
-   Wide code blocks and tables scroll inside their own box so the PAGE never
-   scrolls sideways; long words/URLs wrap instead of overflowing.
+   Mobile readability for rendered README content.
+   Applies to EVERY project page automatically — wide tables, code blocks and
+   blockquotes scroll inside their own box (never the page), and long words /
+   URLs wrap. This is what keeps future projects from repeating the overflow
+   and unreadable-table problems.
    --------------------------------------------------------------------------- */
 
-/* Never let the markdown area push the page wider than the screen */
 .pd__markdown {
-  overflow-wrap: break-word;   /* wrap long words / URLs */
+  overflow-wrap: break-word;
   word-break: break-word;
 }
 
-/* Code fences (``` blocks): the project tree, the ASCII diagram, etc.
-   Scroll horizontally within the block; don't stretch the page. */
+/* Fenced code blocks (project trees, ASCII diagrams): scroll horizontally
+   within the block; keep their own spacing; don't stretch the page. */
 .pd__markdown pre {
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background: var(--surface-2, rgba(127,127,127,0.08));
+  background: var(--surface-2, rgba(127, 127, 127, 0.08));
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px 14px;
@@ -269,8 +270,6 @@
   font-size: 0.85rem;
   line-height: 1.5;
 }
-/* Code INSIDE a fence should not wrap or get the inline pill background —
-   it keeps its own spacing and scrolls with the <pre>. */
 .pd__markdown pre code {
   display: block;
   white-space: pre;
@@ -281,30 +280,36 @@
   color: var(--text-primary);
 }
 
-/* Inline code can wrap so a long token doesn't overflow */
+/* Inline code wraps instead of overflowing */
 .pd__markdown :not(pre) > code {
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
-/* Wide tables scroll inside their own wrapper instead of overflowing.
-   react-markdown wraps tables in the .pd__markdown flow, so make the table
-   itself horizontally scrollable via a block container. */
+/* Wide GFM tables scroll inside their own box (needs remark-gfm to render as
+   real tables in the first place). */
 .pd__markdown table {
   display: block;
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  white-space: nowrap;       /* keep cells from collapsing to 1 char wide */
+  border-collapse: collapse;
+  margin: 0 0 1em;
+  font-size: 0.95rem;
+  white-space: nowrap;
 }
 .pd__markdown th,
 .pd__markdown td {
-  white-space: normal;       /* allow wrapping within a cell once scrolled */
+  white-space: normal;
   min-width: 8ch;
 }
 
-/* Images never overflow */
+/* Blockquotes and images never overflow the screen */
+.pd__markdown blockquote {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
 .pd__markdown img {
   max-width: 100%;
   height: auto;
