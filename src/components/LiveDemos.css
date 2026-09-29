@@ -1,0 +1,41 @@
+/* Live demos: a simple, wrapping row of text links to each project's live
+   site. No cards, no pills — just quick links. */
+.livedemos {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 16px;
+}
+
+.livedemos__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.livedemos__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.livedemos__link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.98rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.livedemos__link:hover,
+.livedemos__link:focus-visible {
+  color: var(--accent-strong);
+  border-bottom-color: currentColor;
+}
