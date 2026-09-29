@@ -1,6 +1,7 @@
 import Section from '../components/Section'
 import { projects } from '../data/projects'
 import ProjectCard from '../components/ProjectCard'
+import LiveDemos from '../components/LiveDemos'
 import './Projects.css'
 
 const PHASES = ['Explore', 'Experiment', 'Build', 'Document']
@@ -13,6 +14,8 @@ export default function Projects() {
       title="Practical things, built and documented"
       intro="Each project opens into a full case study, including how AI helped build it. Details are read directly from each project's repository."
     >
+      <LiveDemos />
+
       <div className="projects__flow" aria-label="Exploration approach">
         {PHASES.map((phase, i) => (
           <div key={phase} className="projects__phase">
