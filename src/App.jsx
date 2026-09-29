@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
 import Home from './pages/Home'
 import ProjectDetail from './pages/ProjectDetail'
 import { useTheme } from './hooks/useTheme'
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
+      <BackToTop />
     </>
   )
 }
