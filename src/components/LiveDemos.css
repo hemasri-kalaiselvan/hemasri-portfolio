@@ -35,7 +35,9 @@
 }
 
 .livedemos__link {
-  display: inline-block; /* underline hugs the text, not the full row */
+  display: inline-flex; /* keeps the external icon on the same line as text */
+  align-items: center;
+  gap: 6px;
   color: var(--accent);
   text-decoration: none;
   font-size: 1rem;
@@ -48,4 +50,16 @@
 .livedemos__link:focus-visible {
   color: var(--accent-strong);
   border-bottom-color: currentColor;
+}
+
+/* The little "opens in a new tab" external-link icon after each link. */
+.livedemos__ext {
+  flex: none;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.livedemos__link:hover .livedemos__ext,
+.livedemos__link:focus-visible .livedemos__ext {
+  opacity: 1;
 }

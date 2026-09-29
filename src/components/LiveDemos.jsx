@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { projects } from '../data/projects'
 import { loadProject, prettyRepoName } from '../lib/readme'
+import Icon from './Icon'
 import './LiveDemos.css'
 
 // Repos to leave OUT of the Live demos strip (by repo name). Everything else
@@ -63,6 +64,7 @@ export default function LiveDemos() {
               rel="noopener noreferrer"
             >
               {item.title}
+              <Icon name="external" size={14} className="livedemos__ext" />
             </a>
           </li>
         ))}

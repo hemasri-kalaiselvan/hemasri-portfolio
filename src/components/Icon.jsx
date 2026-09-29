@@ -31,6 +31,12 @@ const paths = {
     </>
   ),
   arrowRight: <line x1="4" y1="12" x2="20" y2="12" />,
+  arrowUp: (
+    <>
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <polyline points="6 10 12 4 18 10" />
+    </>
+  ),
   external: (
     <>
       <path d="M14 4h6v6" />
