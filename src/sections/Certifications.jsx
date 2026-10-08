@@ -70,9 +70,7 @@ export default function Certifications() {
   return (
     <Section
       id="certifications"
-      eyebrow="Certifications"
-      title="Verified credentials"
-      intro="Certifications from hands-on learning, shown with what they cover and a link to verify."
+      title="Certifications"
     >
       {certifications.length > 0 ? (
         <div className="certs__grid">

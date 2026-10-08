@@ -32,10 +32,10 @@ export const identity = {
   name: 'Hemasri Kalaiselvan',
 
   // The big headline under your name.
-  headline: 'Experienced technology professional',
+  headline: 'Mainframe & Big Data Developer · Exploring AI',
 
   // The one-line summary of your areas.
-  tagline: 'Mainframe · Big Data · Exploring AI · Building practical solutions',
+  tagline: 'Enterprise technology at scale · 15+ years · now building with AI',
 
   // The short introduction paragraph on the home screen.
   intro:
@@ -46,6 +46,14 @@ export const identity = {
   // To use a photo: put the image file in the "public" folder and write
   // its name here, e.g. photo: '/my-photo.jpg',
   photo: '/my-photo.png',
+
+  // Skill "pills" shown as rounded chips in the hero. Edit the text only.
+  pills: ['Mainframe', 'Big Data', 'PySpark', 'Hadoop', 'Generative AI', 'AI Tools'],
+
+  // Stats row at the bottom of the hero. The Projects number is counted
+  // automatically from your projects list (see heroStats below) — you do
+  // not edit it. Years and Certifications you can edit here.
+  yearsLabel: '15+',
 }
 
 
@@ -61,7 +69,7 @@ export const identity = {
  * ------------------------------------------------------------------------- */
 
 export const sectionVisibility = {
-  about: false,           // your professional story
+  about: false,           // merged into the Home hero (side-by-side layout)
   experience: true,       // work history
   skills: true,           // skills and technologies
   projects: true,         // projects (VetriHub, etc.)
@@ -375,3 +383,37 @@ export const contact = {
   // other: [ { label: 'Medium', url: 'https://medium.com/@you' } ],
   other: [],
 }
+
+
+/* ---------------------------------------------------------------------------
+ *  11. EDUCATION  — shown in its own section
+ *
+ *  Each { ... } block is one qualification. Copy a block to add another.
+ * ------------------------------------------------------------------------- */
+
+export const education = [
+  {
+    id: 'ms-se',
+    degree: 'MS Software Engineering',
+    institution: 'VIT University, Vellore',
+    period: '2004 — 2009',
+  },
+]
+
+
+/* ---------------------------------------------------------------------------
+ *  HERO STATS  — the three numbers shown at the bottom of the hero.
+ *
+ *  Projects is counted AUTOMATICALLY from your `projects` list above, so it
+ *  keeps itself correct as you add repos — the portfolio's own repo is not
+ *  counted. Years comes from identity.yearsLabel; Certifications is counted
+ *  from the certifications list. You normally don't edit anything here.
+ * ------------------------------------------------------------------------- */
+
+const projectCount = projects.filter((repo) => repo !== 'hemasri-portfolio').length
+
+export const heroStats = [
+  { value: identity.yearsLabel, label: 'Years Experience' },
+  { value: projectCount + '+', label: 'Projects' },
+  { value: String(certifications.length), label: 'Certifications' },
+]

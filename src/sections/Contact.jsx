@@ -23,7 +23,6 @@ export default function Contact() {
       id="contact"
       eyebrow="Contact"
       title="Let's connect"
-      intro="Open to conversations around technology, projects, and where the industry is heading."
     >
       {links.length > 0 ? (
         <div className="contact__grid">

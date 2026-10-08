@@ -67,7 +67,7 @@ export default function ProjectCard({ repo }) {
 
       <div className="pcard__footer">
         <Link className="pcard__link" to={`/projects/${repo}`}>
-          Read the full case study
+          Read more
           <Icon name="arrowRight" size={16} />
         </Link>
       </div>

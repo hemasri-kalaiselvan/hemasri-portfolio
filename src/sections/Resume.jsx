@@ -13,39 +13,18 @@ export default function Resume() {
   return (
     <Section
       id="resume"
-      eyebrow="Resume"
-      title="A concise professional summary"
+      title="Resume"
     >
       <div className="resume__card card">
-        <div className="resume__summary">
-          <p>{resume.summary}</p>
-        </div>
         <div className="resume__actions">
-          {resume.resumeFile ? (
+          {resumeHref && (
             <a
               className="btn btn--primary"
-              //href={resume.resumeFile}
               href={resumeHref}
               download
             >
               <Icon name="download" size={17} />
               Download resume
-            </a>
-          ) : (
-            <span className="btn btn--ghost resume__disabled" aria-disabled="true">
-              <Icon name="document" size={17} />
-              Downloadable resume coming soon
-            </span>
-          )}
-          {resume.onlineResumeUrl && (
-            <a
-              className="btn btn--ghost"
-              href={resume.onlineResumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View online resume
-              <Icon name="external" size={16} />
             </a>
           )}
         </div>

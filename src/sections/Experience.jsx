@@ -117,9 +117,7 @@ export default function Experience() {
   return (
     <Section
       id="experience"
-      eyebrow="Professional experience"
-      title="Enterprise technology experience"
-      intro="An established career in enterprise technology, expanding as the industry evolves. Each entry can grow into a fuller record over time."
+      title="Professional experience"
     >
       <ol className="exp__timeline">
         {experience.map((entry, i) => (
