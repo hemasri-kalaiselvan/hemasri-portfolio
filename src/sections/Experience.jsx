@@ -64,15 +64,17 @@ function ExperienceEntry({ entry, defaultOpen }) {
           aria-expanded={open}
         >
           <div className="exp__head-main">
+            {/* Row 1: role (left) + company/location (right) */}
             <div className="exp__line">
               {role ? (
                 <span className="exp__line-role">{role}</span>
               ) : (
                 <span className="placeholder-note">Role to be added</span>
               )}
-              {where && <span className="exp__line-meta exp__line-meta--mid">{where}</span>}
-              {when && <span className="exp__line-meta exp__line-meta--end">{when}</span>}
+              {where && <span className="exp__line-meta exp__line-where">{where}</span>}
             </div>
+            {/* Row 2: dates · total years */}
+            {when && <p className="exp__line-when">{when}</p>}
           </div>
           <div className="exp__head-meta">
             {entry.current && <span className="exp__badge">Current</span>}

@@ -26,14 +26,13 @@
   box-shadow: var(--shadow-md);
 }
 
-/* First line spread edge-to-edge: role (left), company/place (centre),
-   dates+years (right) — like the reference site. */
+/* Row 1: role (left) + company/location (right), spread apart */
 .exp__line {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 6px 24px;
+  gap: 4px 24px;
   width: 100%;
 }
 .exp__line-role {
@@ -41,22 +40,19 @@
   font-size: 1.18rem;
   font-weight: 600;
   color: var(--text-primary);
-  flex: 1 1 auto;
 }
-.exp__line-meta {
+.exp__line-where {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-}
-/* middle meta (company/place) and the right meta (dates · years) */
-.exp__line-meta--mid {
-  flex: 1 1 auto;
-  text-align: center;
-}
-.exp__line-meta--end {
-  color: var(--accent);
-  white-space: nowrap;
   text-align: right;
+}
+/* Row 2: dates · total years */
+.exp__line-when {
+  margin: 6px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
 }
 
 .exp__head {
@@ -161,12 +157,15 @@
   gap: 20px;
 }
 .exp__detail-title {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin: 0 0 8px;
+  color: var(--accent-strong);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
 }
 /* Development | Production Support side by side */
 .exp__detail-groups {
