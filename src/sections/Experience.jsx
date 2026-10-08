@@ -53,7 +53,6 @@ function ExperienceEntry({ entry, defaultOpen }) {
 
   const role = Array.isArray(entry.role) ? entry.role.join(' · ') : entry.role
   const where = [entry.company, entry.location].filter(Boolean).join(', ')
-  const when = [entry.period, entry.duration].filter(Boolean).join(' · ')
 
   return (
     <li className="exp__item">
@@ -63,18 +62,20 @@ function ExperienceEntry({ entry, defaultOpen }) {
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
         >
+          {/* Two columns: left (role / duration), right (company / years) */}
           <div className="exp__head-main">
-            {/* Row 1: role (left) + company/location (right) */}
-            <div className="exp__line">
-              {role ? (
-                <span className="exp__line-role">{role}</span>
-              ) : (
-                <span className="placeholder-note">Role to be added</span>
+            <div className="exp__grid">
+              <span className="exp__col-left exp__role">
+                {role || <span className="placeholder-note">Role to be added</span>}
+              </span>
+              {where && <span className="exp__col-right exp__company">{where}</span>}
+              {entry.period && (
+                <span className="exp__col-left exp__period">{entry.period}</span>
               )}
-              {where && <span className="exp__line-meta exp__line-where">{where}</span>}
+              {entry.duration && (
+                <span className="exp__col-right exp__years">{entry.duration}</span>
+              )}
             </div>
-            {/* Row 2: dates · total years */}
-            {when && <p className="exp__line-when">{when}</p>}
           </div>
           <div className="exp__head-meta">
             {entry.current && <span className="exp__badge">Current</span>}

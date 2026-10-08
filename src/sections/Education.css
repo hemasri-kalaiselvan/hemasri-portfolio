@@ -18,38 +18,35 @@
   box-shadow: var(--shadow-md);
 }
 
-/* Degree + institution sit together on the left with a normal gap; the
-   year is pushed to the far right. */
+/* Three columns: degree | institution | year — each its own column with a
+   clear gap. All three share the same font formatting. */
 .edu__row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1.4fr 1.2fr 0.6fr;
+  column-gap: 48px;
   align-items: baseline;
-  gap: 6px 24px;
   width: 100%;
 }
 
-.edu__degree {
+.edu__degree,
+.edu__institution,
+.edu__period {
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
 }
-
-.edu__institution {
-  color: var(--text-secondary);
-  font-size: 0.98rem;
-}
-
+/* the year sits at the far right of its column */
 .edu__period {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
-  color: var(--accent);
-  white-space: nowrap;
-  margin-left: auto; /* push year to the far right */
+  text-align: right;
 }
 
 @media (max-width: 640px) {
+  .edu__row {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
   .edu__period {
-    margin-left: 0;
+    text-align: left;
   }
 }

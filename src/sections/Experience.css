@@ -26,33 +26,57 @@
   box-shadow: var(--shadow-md);
 }
 
-/* Row 1: role (left) + company/location (right), spread apart */
-.exp__line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 4px 24px;
+/* Two-column grid:
+   left column  = role (row 1), duration (row 2)
+   right column = company/location (row 1), years of exp (row 2)
+   Clear gap between the two columns. */
+.exp__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+  row-gap: 8px;
   width: 100%;
+  align-items: baseline;
 }
-.exp__line-role {
+.exp__col-left {
+  grid-column: 1;
+}
+.exp__col-right {
+  grid-column: 2;
+}
+.exp__role {
   font-family: var(--font-display);
-  font-size: 1.18rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-primary);
 }
-.exp__line-where {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  text-align: right;
+/* Company name highlighted like a subtitle, not tiny mono text */
+.exp__company {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
-/* Row 2: dates · total years */
-.exp__line-when {
-  margin: 6px 0 0;
+.exp__period {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--accent);
+}
+.exp__years {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .exp__grid {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+  }
+  .exp__col-left,
+  .exp__col-right {
+    grid-column: 1;
+  }
 }
 
 .exp__head {
