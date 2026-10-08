@@ -31,11 +31,11 @@ export const identity = {
   // To mask it later, change the text (e.g. 'H. K.' or 'Confidential').
   name: 'Hemasri Kalaiselvan',
 
-  // The big headline under your name.
-  headline: 'Mainframe & Big Data Developer · Exploring AI',
+  // The big headline under your name. Parts are separated by " | ".
+  headline: 'Mainframe & Big Data - Developer & Production Support | Exploring AI',
 
-  // The one-line summary of your areas.
-  tagline: 'Enterprise technology at scale · 15+ years · now building with AI',
+  // The one-line summary of your areas. (No longer shown in the hero.)
+  tagline: '',
 
   // The short introduction paragraph on the home screen.
   intro:
@@ -117,8 +117,9 @@ export const experience = [
   {
     id: 'tcs',
     company: 'TCS',            // company name — change to mask if needed
-    role: ['Developer', 'Production Support'],                // e.g. 'Senior Systems Engineer' — or keep null
-    duration: '15+ years',
+    location: 'Chennai, Tamil Nadu, India',
+    role: 'Mainframe & Big Data - Developer & Production Support',  // shown as the main line
+    duration: '15+ yrs of exp',
     period: 'Sep 2009 — Jun 2026',              // e.g. '2009 — Present' — or keep null
     technologyAreas: ['Mainframe', 'Big Data'],
     responsibilities: [

@@ -8,19 +8,16 @@ export default function Education() {
   return (
     <Section
       id="education"
-      eyebrow="Education"
-      title="Academic background"
+      title="Education"
     >
       <ul className="edu__list">
         {education.map((item) => (
           <li key={item.id} className="edu__item card">
-            <div className="edu__main">
-              <h3 className="edu__degree">{item.degree}</h3>
-              {item.institution && (
-                <p className="edu__institution">{item.institution}</p>
-              )}
-            </div>
-            {item.period && <span className="edu__period">{item.period}</span>}
+            <h3 className="edu__degree">{item.degree}</h3>
+            {item.institution && (
+              <p className="edu__institution">{item.institution}</p>
+            )}
+            {item.period && <p className="edu__period">{item.period}</p>}
           </li>
         ))}
       </ul>

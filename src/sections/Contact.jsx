@@ -21,7 +21,6 @@ export default function Contact() {
   return (
     <Section
       id="contact"
-      eyebrow="Contact"
       title="Let's connect"
     >
       {links.length > 0 ? (

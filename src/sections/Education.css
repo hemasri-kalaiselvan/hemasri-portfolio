@@ -8,17 +8,10 @@
 }
 
 .edu__item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px 24px;
+  padding: 22px 24px;
 }
 
-.edu__main {
-  min-width: 0;
-}
-
+/* Three stacked rows: degree, institution + place, year */
 .edu__degree {
   margin: 0;
   font-size: 1.12rem;
@@ -27,24 +20,15 @@
 }
 
 .edu__institution {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   color: var(--text-secondary);
   font-size: 0.98rem;
 }
 
 .edu__period {
-  flex: none;
+  margin: 8px 0 0;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   letter-spacing: 0.02em;
   color: var(--accent);
-  white-space: nowrap;
-}
-
-@media (max-width: 560px) {
-  .edu__item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
 }

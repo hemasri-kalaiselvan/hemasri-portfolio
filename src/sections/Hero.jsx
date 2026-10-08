@@ -1,16 +1,10 @@
 import { profile } from '../data/profile'
-import Icon from '../components/Icon'
 import './Hero.css'
 
 export default function Hero() {
   const { name, hero, about } = profile
   const pills = hero.pills || []
   const stats = hero.stats || []
-
-  const scrollTo = (id) => {
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
 
   const initials = name
     .split(' ')
@@ -19,18 +13,16 @@ export default function Hero() {
     .slice(0, 2)
     .toUpperCase()
 
-  // The hero now doubles as the "About" intro, so it shows the first
-  // About paragraph beneath the tagline — Home and About read as one.
+  // The hero doubles as the "About" intro, so it shows the first About
+  // paragraph beneath the headline — Home and About read as one section.
   const aboutLead = about?.paragraphs?.[0] || hero.intro
 
   return (
     <section id="home" className="hero">
       <div className="container hero__inner">
         <div className="hero__content">
-          <p className="eyebrow">15+ years in technology</p>
           <h1 className="hero__name">{name}</h1>
           <p className="hero__headline">{hero.headline}</p>
-          <p className="hero__tagline">{hero.tagline}</p>
 
           {pills.length > 0 && (
             <ul className="hero__pills" aria-label="Focus areas">
@@ -42,25 +34,15 @@ export default function Hero() {
 
           <p className="hero__intro">{aboutLead}</p>
 
-          <div className="hero__cta">
-            <button className="btn btn--primary" onClick={() => scrollTo('projects')}>
-              View projects
-              <Icon name="arrowRight" size={17} />
-            </button>
-            <button className="btn btn--ghost" onClick={() => scrollTo('experience')}>
-              Explore experience
-            </button>
-          </div>
-
           {stats.length > 0 && (
-            <dl className="hero__stats" aria-label="At a glance">
+            <ul className="hero__stats" aria-label="At a glance">
               {stats.map((s) => (
-                <div key={s.label} className="hero__stat">
-                  <dt className="hero__stat-value">{s.value}</dt>
-                  <dd className="hero__stat-label">{s.label}</dd>
-                </div>
+                <li key={s.label} className="hero__stat">
+                  <span className="hero__stat-value">{s.value}</span>
+                  <span className="hero__stat-label">{s.label}</span>
+                </li>
               ))}
-            </dl>
+            </ul>
           )}
         </div>
 
@@ -80,13 +62,6 @@ export default function Hero() {
           ) : (
             <div className="hero__monogram">
               <span className="hero__monogram-mark">{initials}</span>
-              <div className="hero__monogram-journey">
-                <span>Experience</span>
-                <span>Evolution</span>
-                <span>Exploration</span>
-                <span>Building</span>
-                <span>Growth</span>
-              </div>
             </div>
           )}
         </div>

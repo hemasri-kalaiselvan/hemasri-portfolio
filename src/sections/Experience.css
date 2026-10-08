@@ -1,6 +1,9 @@
 .exp__timeline {
   margin-top: 44px;
   position: relative;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 .exp__item {
@@ -73,6 +76,20 @@
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin: 0;
+}
+/* New first-line role title + meta line (company, place · dates · years) */
+.exp__role-title {
+  font-size: 1.22rem;
+  line-height: 1.25;
+  margin: 0 0 6px;
+  color: var(--text-primary);
+}
+.exp__meta-line {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
 }
 .exp__head-meta {
   display: flex;

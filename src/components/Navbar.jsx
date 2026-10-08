@@ -71,7 +71,6 @@ export default function Navbar({ theme, toggleTheme }) {
           aria-label="Go to top"
         >
           <span className="nav__brand-name">{profile.brandShort}</span>
-          <span className="nav__brand-role">Technology&nbsp;Professional</span>
         </button>
 
         <nav className="nav__links" aria-label="Primary">

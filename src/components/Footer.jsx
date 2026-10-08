@@ -14,7 +14,7 @@ export default function Footer() {
             {profile.name}
           </button>
           <p className="footer__tag">
-            Experience → Evolution → Exploration → Building → Growth
+            Mainframe & Big Data - Developer & Production Support | Exploring AI
           </p>
         </div>
         <p className="footer__copy">© {year} {profile.name}</p>

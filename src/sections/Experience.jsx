@@ -64,17 +64,24 @@ function ExperienceEntry({ entry, defaultOpen }) {
           aria-expanded={open}
         >
           <div className="exp__head-main">
-            <h3 className="exp__company">{entry.company}</h3>
-            <p className="exp__role">
+            <h3 className="exp__role-title">
               {Array.isArray(entry.role)
                 ? entry.role.join(' · ')
                 : entry.role || (
                     <span className="placeholder-note">Role to be added</span>
                   )}
+            </h3>
+            <p className="exp__meta-line">
+              {[
+                [entry.company, entry.location].filter(Boolean).join(', '),
+                entry.period,
+                entry.duration,
+              ]
+                .filter(Boolean)
+                .join('  ·  ')}
             </p>
           </div>
           <div className="exp__head-meta">
-            <span className="exp__duration">{entry.duration}</span>
             {entry.current && <span className="exp__badge">Current</span>}
             <span className={`exp__chevron${open ? ' is-open' : ''}`} aria-hidden="true" />
           </div>
@@ -92,7 +99,6 @@ function ExperienceEntry({ entry, defaultOpen }) {
 
         <div className={`exp__body${open ? ' is-open' : ''}`}>
           <div className="exp__body-inner">
-            {entry.period && <p className="exp__period">{entry.period}</p>}
             {hasDetails ? (
               <div className="exp__details">
                 <DetailBlock label="Responsibilities" items={entry.responsibilities} />

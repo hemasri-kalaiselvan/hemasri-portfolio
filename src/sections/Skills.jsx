@@ -7,8 +7,7 @@ export default function Skills() {
   return (
     <Section
       id="skills"
-      eyebrow="Skills & technologies"
-      title="Technology"
+      title="Skills & Technologies"
       alt
     >
       <div className="skills__grid">
