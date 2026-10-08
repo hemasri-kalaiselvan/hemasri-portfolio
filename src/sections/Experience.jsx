@@ -52,15 +52,8 @@ function ExperienceEntry({ entry, defaultOpen }) {
     (entry.achievements && entry.achievements.length)
 
   const role = Array.isArray(entry.role) ? entry.role.join(' · ') : entry.role
-
-  // The whole first line: role, then company/location, dates, years — each
-  // its own inline item with gaps between.
-  const lineItems = [
-    role,
-    [entry.company, entry.location].filter(Boolean).join(', '),
-    entry.period,
-    entry.duration,
-  ].filter(Boolean)
+  const where = [entry.company, entry.location].filter(Boolean).join(', ')
+  const when = [entry.period, entry.duration].filter(Boolean).join(' · ')
 
   return (
     <li className="exp__item">
@@ -72,18 +65,13 @@ function ExperienceEntry({ entry, defaultOpen }) {
         >
           <div className="exp__head-main">
             <div className="exp__line">
-              {lineItems.length > 0 ? (
-                lineItems.map((text, i) => (
-                  <span
-                    key={i}
-                    className={i === 0 ? 'exp__line-role' : 'exp__line-meta'}
-                  >
-                    {text}
-                  </span>
-                ))
+              {role ? (
+                <span className="exp__line-role">{role}</span>
               ) : (
                 <span className="placeholder-note">Role to be added</span>
               )}
+              {where && <span className="exp__line-meta exp__line-meta--mid">{where}</span>}
+              {when && <span className="exp__line-meta exp__line-meta--end">{when}</span>}
             </div>
           </div>
           <div className="exp__head-meta">
@@ -97,8 +85,10 @@ function ExperienceEntry({ entry, defaultOpen }) {
             {hasDetails ? (
               <div className="exp__details">
                 <DetailBlock label="Responsibilities" items={entry.responsibilities} />
-                <DetailBlock label="Key contributions" items={entry.contributions} />
-                <DetailBlock label="Projects" items={entry.projects} />
+                <div className="exp__details-pair">
+                  <DetailBlock label="Key contributions" items={entry.contributions} />
+                  <DetailBlock label="Domain" items={entry.projects} />
+                </div>
                 <DetailBlock label="Achievements" items={entry.achievements} />
               </div>
             ) : (

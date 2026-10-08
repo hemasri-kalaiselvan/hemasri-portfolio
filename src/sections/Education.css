@@ -18,23 +18,29 @@
   box-shadow: var(--shadow-md);
 }
 
-/* All three on one row, with gaps between */
+/* Three cells spread edge-to-edge: degree (left), institution (centre),
+   year (right) — like the reference site. */
 .edu__row {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+  justify-content: space-between;
   gap: 8px 28px;
+  width: 100%;
 }
 
 .edu__degree {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
+  flex: 1 1 auto;
 }
 
 .edu__institution {
   color: var(--text-secondary);
   font-size: 0.98rem;
+  flex: 1 1 auto;
+  text-align: center;
 }
 
 .edu__period {
@@ -42,4 +48,16 @@
   font-size: 0.82rem;
   letter-spacing: 0.02em;
   color: var(--accent);
+  white-space: nowrap;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .edu__row {
+    justify-content: flex-start;
+  }
+  .edu__institution,
+  .edu__period {
+    text-align: left;
+  }
 }

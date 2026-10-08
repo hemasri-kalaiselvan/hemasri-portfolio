@@ -26,23 +26,37 @@
   box-shadow: var(--shadow-md);
 }
 
-/* First line: role + company/location + dates + years, inline with gaps */
+/* First line spread edge-to-edge: role (left), company/place (centre),
+   dates+years (right) — like the reference site. */
 .exp__line {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px 22px;
+  justify-content: space-between;
+  gap: 6px 24px;
+  width: 100%;
 }
 .exp__line-role {
   font-family: var(--font-display);
   font-size: 1.18rem;
   font-weight: 600;
   color: var(--text-primary);
+  flex: 1 1 auto;
 }
 .exp__line-meta {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--text-secondary);
+}
+/* middle meta (company/place) and the right meta (dates · years) */
+.exp__line-meta--mid {
+  flex: 1 1 auto;
+  text-align: center;
+}
+.exp__line-meta--end {
+  color: var(--accent);
+  white-space: nowrap;
+  text-align: right;
 }
 
 .exp__head {
@@ -154,9 +168,23 @@
   color: var(--accent);
   margin: 0 0 8px;
 }
+/* Development | Production Support side by side */
 .exp__detail-groups {
   display: grid;
-  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+}
+/* Key contributions | Domain side by side */
+.exp__details-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+}
+@media (max-width: 640px) {
+  .exp__detail-groups,
+  .exp__details-pair {
+    grid-template-columns: 1fr;
+  }
 }
 .exp__detail-subtitle {
   font-family: var(--font-sans);
