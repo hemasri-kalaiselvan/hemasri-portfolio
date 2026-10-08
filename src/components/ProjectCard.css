@@ -2,12 +2,14 @@
   padding: 26px 26px 22px;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
 }
+/* Hover: slight zoom-in + glowing accent border */
 .pcard:hover {
-  border-color: var(--border-strong);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  transform: scale(1.025);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12),
+    0 0 0 2px var(--accent-soft-bg);
 }
 
 .pcard__top {

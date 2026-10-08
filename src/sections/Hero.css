@@ -76,6 +76,14 @@
   background: var(--surface-2);
   color: var(--text-secondary);
   white-space: nowrap;
+  cursor: default;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+/* Hover: dark highlighted background */
+.hero__pill:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #fff;
 }
 
 /* Stats — each in a round-bordered circle */

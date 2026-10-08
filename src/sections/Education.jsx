@@ -13,11 +13,13 @@ export default function Education() {
       <ul className="edu__list">
         {education.map((item) => (
           <li key={item.id} className="edu__item card">
-            <h3 className="edu__degree">{item.degree}</h3>
-            {item.institution && (
-              <p className="edu__institution">{item.institution}</p>
-            )}
-            {item.period && <p className="edu__period">{item.period}</p>}
+            <div className="edu__row">
+              <span className="edu__degree">{item.degree}</span>
+              {item.institution && (
+                <span className="edu__institution">{item.institution}</span>
+              )}
+              {item.period && <span className="edu__period">{item.period}</span>}
+            </div>
           </li>
         ))}
       </ul>

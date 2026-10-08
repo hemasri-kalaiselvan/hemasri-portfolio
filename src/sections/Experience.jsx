@@ -51,12 +51,19 @@ function ExperienceEntry({ entry, defaultOpen }) {
     (entry.projects && entry.projects.length) ||
     (entry.achievements && entry.achievements.length)
 
+  const role = Array.isArray(entry.role) ? entry.role.join(' · ') : entry.role
+
+  // The whole first line: role, then company/location, dates, years — each
+  // its own inline item with gaps between.
+  const lineItems = [
+    role,
+    [entry.company, entry.location].filter(Boolean).join(', '),
+    entry.period,
+    entry.duration,
+  ].filter(Boolean)
+
   return (
     <li className="exp__item">
-      <div className="exp__marker" aria-hidden="true">
-        <span className={`exp__dot${entry.current ? ' exp__dot--current' : ''}`} />
-      </div>
-
       <div className="exp__card card">
         <button
           className="exp__head"
@@ -64,38 +71,26 @@ function ExperienceEntry({ entry, defaultOpen }) {
           aria-expanded={open}
         >
           <div className="exp__head-main">
-            <h3 className="exp__role-title">
-              {Array.isArray(entry.role)
-                ? entry.role.join(' · ')
-                : entry.role || (
-                    <span className="placeholder-note">Role to be added</span>
-                  )}
-            </h3>
-            <p className="exp__meta-line">
-              {[
-                [entry.company, entry.location].filter(Boolean).join(', '),
-                entry.period,
-                entry.duration,
-              ]
-                .filter(Boolean)
-                .join('  ·  ')}
-            </p>
+            <div className="exp__line">
+              {lineItems.length > 0 ? (
+                lineItems.map((text, i) => (
+                  <span
+                    key={i}
+                    className={i === 0 ? 'exp__line-role' : 'exp__line-meta'}
+                  >
+                    {text}
+                  </span>
+                ))
+              ) : (
+                <span className="placeholder-note">Role to be added</span>
+              )}
+            </div>
           </div>
           <div className="exp__head-meta">
             {entry.current && <span className="exp__badge">Current</span>}
             <span className={`exp__chevron${open ? ' is-open' : ''}`} aria-hidden="true" />
           </div>
         </button>
-
-        {entry.technologyAreas?.length > 0 && (
-          <div className="exp__areas">
-            {entry.technologyAreas.map((area) => (
-              <span key={area} className="chip">
-                {area}
-              </span>
-            ))}
-          </div>
-        )}
 
         <div className={`exp__body${open ? ' is-open' : ''}`}>
           <div className="exp__body-inner">

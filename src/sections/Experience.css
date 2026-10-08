@@ -8,53 +8,41 @@
 
 .exp__item {
   position: relative;
-  padding-left: 40px;
   padding-bottom: 22px;
 }
 .exp__item:last-child {
   padding-bottom: 0;
 }
 
-/* Vertical line */
-.exp__marker {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 24px;
-  display: flex;
-  justify-content: center;
-}
-.exp__marker::before {
-  content: '';
-  position: absolute;
-  top: 26px;
-  bottom: -4px;
-  width: 1.5px;
-  background: var(--border);
-}
-.exp__item:last-child .exp__marker::before {
-  display: none;
-}
-.exp__dot {
-  position: relative;
-  z-index: 1;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 2px solid var(--border-strong);
-  margin-top: 20px;
-}
-.exp__dot--current {
-  border-color: var(--accent);
-  background: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft-bg);
-}
-
 .exp__card {
   padding: 0;
   overflow: hidden;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+/* Hover: slide slightly right */
+.exp__card:hover {
+  transform: translateX(6px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* First line: role + company/location + dates + years, inline with gaps */
+.exp__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 22px;
+}
+.exp__line-role {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.exp__line-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
 }
 
 .exp__head {
