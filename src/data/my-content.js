@@ -256,6 +256,7 @@ export const skills = [
 
 export const projects = [
   'genai-lab', 
+  'portfolio-generator',
   'sandbox-store',  
   'kolam-studio',
   'vetrihub',
