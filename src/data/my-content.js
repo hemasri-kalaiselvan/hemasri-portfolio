@@ -261,6 +261,7 @@ export const projects = [
   'kolam-studio',
   'vetrihub',
   'ai-content-writer',
+  'ai-videos',
   'hemasri-portfolio',
 
 ]
