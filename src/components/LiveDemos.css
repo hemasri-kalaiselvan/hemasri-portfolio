@@ -21,17 +21,31 @@
   margin-bottom: 12px;
 }
 
+/* Responsive grid: 1 column on phone, 2 on tablet, 3 on desktop.
+   Each link gets its own cell, so no two ever share a line, but they pack
+   into columns instead of one tall list — scales as projects are added. */
 .livedemos__list {
-  display: flex;
-  flex-direction: column; /* one link per row — the key fix */
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px 28px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
+@media (min-width: 560px) {
+  .livedemos__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 900px) {
+  .livedemos__list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 
 .livedemos__item {
   line-height: 1.3;
+  justify-self: start; /* underline hugs the text, not the whole column */
 }
 
 .livedemos__link {
