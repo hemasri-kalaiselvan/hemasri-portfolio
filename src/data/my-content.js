@@ -258,6 +258,7 @@ export const projects = [
   'genai-lab', 
   'portfolio-generator',
   'sandbox-store',  
+  'vaazhthu-studio',
   'kolam-studio',
   'vetrihub',
   'ai-content-writer',
