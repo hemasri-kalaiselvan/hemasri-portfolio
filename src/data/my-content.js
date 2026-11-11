@@ -263,8 +263,11 @@ export const projects = [
   'vetrihub',
   'ai-content-writer',
   'ai-videos',
-  'hemasri-portfolio',
-
+  'family-tree',
+  'game-shelf',
+  'habit-tracker',
+  'student-report',
+  'hemasri-portfolio',  
 ]
 
 
