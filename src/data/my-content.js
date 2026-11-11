@@ -1,3 +1,5 @@
+import stats from './stats.json'
+
 /* ============================================================================
  *
  *   YOUR PERSONAL INFORMATION — EDIT THIS FILE ONLY
@@ -184,6 +186,18 @@ export const experience = [
  *  Empty categories show a tidy "ready to add" note.
  * ------------------------------------------------------------------------- */
 
+/* Coding-practice profiles — used by the Skills card and the Hero circles.
+   The solved counts are refreshed automatically every day from your public
+   profiles into stats.json (see scripts/update-stats.mjs). Don't edit them here. */
+const gfg = {
+  url: 'https://www.geeksforgeeks.org/profile/vsks5dqmb',
+  solved: stats.gfg ?? 0,
+}
+const leetcode = {
+  url: 'https://leetcode.com/u/hemasri_kalaiselvan/',
+  solved: stats.leetcode ?? 0,
+}
+
 export const skills = [
   {
     id: 'enterprise',
@@ -221,6 +235,18 @@ export const skills = [
     items: [
       // add web/app technologies you actually use
 	  'HTML', 'CSS', 'JavaScript', 'React', 'Git', 'GitHub'
+    ],
+  },
+  {
+    id: 'problem-solving',
+    title: 'Problem Solving',
+    description: 'Coding practice and problem solving on competitive platforms.',
+    icon: 'code',
+    items: [],
+    // Profile buttons shown on the card.
+    links: [
+      { label: 'GeeksforGeeks · ' + gfg.solved + ' solved', url: gfg.url },
+      { label: leetcode.solved > 0 ? 'LeetCode · ' + leetcode.solved + ' solved' : 'LeetCode', url: leetcode.url },
     ],
   },
 ]
@@ -409,7 +435,11 @@ export const education = [
 
 
 /* ---------------------------------------------------------------------------
- *  HERO STATS  — the three numbers shown at the bottom of the hero.
+ *  HERO STATS  — the round numbers shown at the bottom of the hero.
+ *
+ *  Every circle is clickable. `target` is the id of the section it scrolls
+ *  to ('experience', 'projects', 'skills', 'certifications', ...). When you
+ *  add a new circle, give it a `target` and it works automatically.
  *
  *  Projects is counted AUTOMATICALLY from your `projects` list above, so it
  *  keeps itself correct as you add repos — the portfolio's own repo is not
@@ -420,7 +450,12 @@ export const education = [
 const projectCount = projects.filter((repo) => repo !== 'hemasri-portfolio').length
 
 export const heroStats = [
-  { value: identity.yearsLabel, label: 'Years Experience' },
-  { value: projectCount + '+', label: 'Projects' },
-  { value: String(certifications.length), label: 'Certifications' },
+  { value: identity.yearsLabel, label: 'Years Experience', target: 'experience' },
+  { value: projectCount + '+', label: 'Projects', target: 'projects' },
+  { value: String(certifications.length), label: 'Certifications', target: 'certifications' },
+  { value: String(gfg.solved), label: 'GfG Problems', target: 'problem-solving' },
+  // LeetCode circle appears automatically once you have solved at least one problem.
+  ...(leetcode.solved > 0
+    ? [{ value: String(leetcode.solved), label: 'LeetCode Problems', target: 'problem-solving' }]
+    : []),
 ]

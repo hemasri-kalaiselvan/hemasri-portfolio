@@ -18,6 +18,20 @@
   box-shadow: var(--shadow-md);
 }
 
+.skills__card {
+  scroll-margin-top: 90px;
+}
+.skills__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.skills__link {
+  max-width: 100%;
+  text-align: left;
+}
+
 .skills__head {
   display: flex;
   align-items: center;
