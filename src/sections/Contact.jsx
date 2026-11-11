@@ -14,6 +14,10 @@ export default function Contact() {
     links.push({ label: 'LinkedIn', value: 'Connect on LinkedIn', href: contact.linkedin, icon: 'linkedin' })
   if (contact.github)
     links.push({ label: 'GitHub', value: 'View GitHub', href: contact.github, icon: 'github' })
+  if (contact.leetcode)
+    links.push({ label: 'LeetCode', value: 'View LeetCode profile', href: contact.leetcode, icon: 'leetcode' })
+  if (contact.geeksforgeeks)
+    links.push({ label: 'GeeksforGeeks', value: 'View GeeksforGeeks profile', href: contact.geeksforgeeks, icon: 'geeksforgeeks' })
   contact.other?.forEach((o) =>
     links.push({ label: o.label, value: o.label, href: o.url, icon: 'external' })
   )
@@ -21,7 +25,7 @@ export default function Contact() {
   return (
     <Section
       id="contact"
-      title="Let's connect"
+      title="Contact & Profiles"
     >
       {links.length > 0 ? (
         <div className="contact__grid">
@@ -49,7 +53,7 @@ export default function Contact() {
       ) : (
         <div className="contact__empty card">
           <p className="placeholder-note">
-            Contact details will be added here (email, LinkedIn, GitHub)
+            Contact details and profiles will be added here
           </p>
         </div>
       )}

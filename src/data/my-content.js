@@ -190,7 +190,7 @@ export const experience = [
    The solved counts are refreshed automatically every day from your public
    profiles into stats.json (see scripts/update-stats.mjs). Don't edit them here. */
 const gfg = {
-  url: 'https://www.geeksforgeeks.org/profile/vsks5dqmb',
+  url: 'https://www.geeksforgeeks.org/profile/vsks5dqmb?tab=activity',
   solved: stats.gfg ?? 0,
 }
 const leetcode = {
@@ -411,6 +411,8 @@ export const contact = {
   email: 'vsks5587@gmail.com',      // e.g. 'name@example.com'
   linkedin: 'https://www.linkedin.com/in/hemasri-kalaiselvan/',   // e.g. 'https://www.linkedin.com/in/your-handle'
   github: 'https://github.com/hemasri-kalaiselvan',     // e.g. 'https://github.com/your-handle'
+  leetcode: leetcode.url,            // from the coding-profiles block above
+  geeksforgeeks: gfg.url,
 
   // Any other professional links. Example:
   // other: [ { label: 'Medium', url: 'https://medium.com/@you' } ],
@@ -453,7 +455,7 @@ export const heroStats = [
   { value: identity.yearsLabel, label: 'Years Experience', target: 'experience' },
   { value: projectCount + '+', label: 'Projects', target: 'projects' },
   { value: String(certifications.length), label: 'Certifications', target: 'certifications' },
-  { value: String(gfg.solved), label: 'GfG Problems', target: 'problem-solving' },
+  { value: String(gfg.solved), label: 'GeeksforGeeks Problems', target: 'problem-solving' },
   // LeetCode circle appears automatically once you have solved at least one problem.
   ...(leetcode.solved > 0
     ? [{ value: String(leetcode.solved), label: 'LeetCode Problems', target: 'problem-solving' }]
